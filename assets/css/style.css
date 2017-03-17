@@ -8,3 +8,7 @@ main {
     flex: 1 0 auto;
 }
 
+#submitButton {
+	padding-left:5px;
+	padding-right:5px;	
+}
