@@ -25,10 +25,15 @@ main {
     flex: 1 0 auto;
 }
 
-#submitButton {
+/*#searchBtn {
 	padding-left:5px;
 	padding-right:5px;	
-}
+}*/
+
+#map {
+        height: 400px;
+        width: 100%;
+    }
 
 .mapSection {
 	margin-top:80px;	
