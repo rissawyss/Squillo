@@ -1,3 +1,11 @@
+$(document).ready(function() {
+	
+    $(".button-collapse").sideNav();
+    $('.modal').modal();
+    $('#modal1').modal('open');
+
+});
+
 function initMap() {
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -105,11 +113,4 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         'Error: Your browser doesn\'t support geolocation.');
 }
 
-$(document).ready(function() {
-    $(".button-collapse").sideNav();
-    $('.modal').modal();
-    $('#modal1').modal('open');
 
-
-
-})
