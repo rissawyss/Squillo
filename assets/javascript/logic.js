@@ -1,3 +1,132 @@
+var singleFamily = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+
+$.ajax({
+    url: singleFamily,
+    method: "GET"
+}).done(function(response) {
+    console.log(response);
+
+    var p = $("<p>").addClass("info-row");
+    var name = $("<span>").html(response.dataset.name).addClass("left");
+    var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+
+    $("#results").append(p);
+    p.append(name);
+    p.append(data);
+
+    var medianRent = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_RMP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+
+    $.ajax({
+        url: medianRent,
+        method: "GET"
+    }).done(function(response) {
+        console.log(response);
+
+        var p = $("<p>").addClass("info-row");;
+        var name = $("<span>").html(response.dataset.name).addClass("left");
+        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+
+        $("#results").append(p);
+        p.append(name);
+        p.append(data);
+
+        var medianList = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_MLP?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+
+        $.ajax({
+            url: medianList,
+            method: "GET"
+        }).done(function(response) {
+            console.log(response);
+
+            var p = $("<p>").addClass("info-row");;
+            var name = $("<span>").html(response.dataset.name).addClass("left");
+            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+
+            $("#results").append(p);
+            p.append(name);
+            p.append(data);
+
+            var medianSale = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_MSP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+
+            $.ajax({
+                url: medianSale,
+                method: "GET"
+            }).done(function(response) {
+                console.log(response);
+
+                var p = $("<p>").addClass("info-row");;
+                var name = $("<span>").html(response.dataset.name).addClass("left");
+                var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+
+                $("#results").append(p);
+                p.append(name);
+                p.append(data);
+
+                var bdrm1 = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_1B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+
+                $.ajax({
+                    url: bdrm1,
+                    method: "GET"
+                }).done(function(response) {
+                    console.log(response);
+
+                    var p = $("<p>").addClass("info-row");;
+                    var name = $("<span>").html(response.dataset.name).addClass("left");
+                    var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+
+                    $("#results").append(p);
+                    p.append(name);
+                    p.append(data);
+
+                    var bdrm2 = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_2B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+
+                    $.ajax({
+                        url: bdrm2,
+                        method: "GET"
+                    }).done(function(response) {
+                        console.log(response);
+
+                        var p = $("<p>").addClass("info-row");;
+                        var name = $("<span>").html(response.dataset.name).addClass("left");
+                        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+
+                        $("#results").append(p);
+                        p.append(name);
+                        p.append(data);
+
+                        var foreclosure = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_FR.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+
+                        $.ajax({
+                            url: foreclosure,
+                            method: "GET"
+                        }).done(function(response) {
+                            console.log(response);
+
+                            var p = $("<p>").addClass("info-row");;
+                            var name = $("<span>").html(response.dataset.name).addClass("left");
+                            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                            
+                            $("#results").append(p);
+                            p.append(name);
+                            p.append(data);
+
+                        });
+                    });
+                });
+            });
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+
 function initMap() {
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -111,14 +240,14 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 $(document).ready(function() {
 
-    if(localStorage.getItem("squilloName") === null || localStorage.getItem("locationClicked") === false){
+    if (localStorage.getItem("squilloName") === null || localStorage.getItem("locationClicked") === false) {
         $('.modal').modal();
         $('#modal1').modal('open');
         console.log("NO NAME");
-    }else{
+    } else {
         $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
     }
-    
+
     var locationClicked = false;
     $(".button-collapse").sideNav();
 
@@ -127,7 +256,7 @@ $(document).ready(function() {
         console.log(username);
         if (username !== "" && username !== null) {
             localStorage.setItem("squilloName", username);
-        $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
+            $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
 
             // localStorage.setItem("locationClicked", locationClicked);
         }
@@ -135,5 +264,3 @@ $(document).ready(function() {
     })
 
 });
-
-

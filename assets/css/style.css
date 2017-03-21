@@ -30,21 +30,28 @@ main {
 }
 
 #map {
-    height: 600px;
+    height: 450px;
     width: 40%;
 
 }
 
-.infoSection {
-    z-index: -1;
-
+.querySection {
+	display: block;
+    height: 450px;
 }
 
-.searchSection {
+.introSection {
 	padding-top: 80px;
 	padding-bottom: 80px;
     box-shadow: 0px 2px 2px 0 rgba(0,0,0,0.12);
 
+}
+.info-row {
+	overflow: auto;
+}
+
+.resultSection {
+	
 }
 
 .cardSection {
