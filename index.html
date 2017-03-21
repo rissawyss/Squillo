@@ -20,6 +20,7 @@
                 <a href="#!" class="brand-logo">Squillo Logo</a>
                 <!-- Menu Links that hide on Medium and smaller devices -->
                 <ul class="right hide-on-med-and-down">
+                	<li id="hi"></li>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Favs</a></li>
                 </ul>
@@ -50,9 +51,9 @@
                 </div>
             </div>
         </section>
-        <!-- Google Map -->
-        <section class="mapSection">
-            <div id="map"></div>
+        <!-- Info -->
+        <section class="infoSection">
+            <div id="map" class="right"></div>
         </section>
         <!-- Cards -->
         <section class="cardSection">
@@ -86,12 +87,12 @@
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
             <div class="modal-content">
-                <h4>Welcome Message?</h4>
-                <p>Instructions to ask for email input</p>
+                <h4 class="center">Welcome to Squillo!</h4>
+                <p class="center">Please enter a username to get started.</p>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="email" class="validate">
-                        <label for="email">Email</label>
+                        <input id="name" type="text" class="validate">
+                        <label for="name">Enter a Username</label>
                     </div>
                 </div>
             </div>
@@ -127,11 +128,13 @@
     </footer>
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/logic.js"></script>
-    <!-- Compiled and minified JavaScript for Materialize-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARhPeu596nXJrWQNKL-YoIXwkV0MbhCW0&callback=initMap&language=en&region=US&&libraries=places"></script>
     <script type="text/javascript" src="assets/javascript/firebase.js"></script>
+    <script type="text/javascript" src="assets/javascript/logic.js"></script>
+    <!-- Compiled and minified JavaScript for Materialize-->
+    
+    
 </body>
 
 </html>

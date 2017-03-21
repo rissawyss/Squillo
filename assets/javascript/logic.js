@@ -1,11 +1,3 @@
-$(document).ready(function() {
-	
-    $(".button-collapse").sideNav();
-    $('.modal').modal();
-    $('#modal1').modal('open');
-
-});
-
 function initMap() {
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -18,7 +10,9 @@ function initMap() {
 
     var geocoder = new google.maps.Geocoder();
 
-    $("#currentLocationBtn").on("click", function() {
+    $("#currentLocationBtn").on("click", function(event) {
+        event.preventDefault();
+        console.log("heLLO");
 
         var infoWindow = new google.maps.InfoWindow({
             map: map,
@@ -62,6 +56,8 @@ function initMap() {
             handleLocationError(false, infoWindow, map.getCenter());
 
         }
+        locationClicked = true;
+        localStorage.setItem("locationClicked", locationClicked);
 
     });
 
@@ -112,5 +108,32 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         'Error: The Geolocation service failed.' :
         'Error: Your browser doesn\'t support geolocation.');
 }
+
+$(document).ready(function() {
+
+    if(localStorage.getItem("squilloName") === null || localStorage.getItem("locationClicked") === false){
+        $('.modal').modal();
+        $('#modal1').modal('open');
+        console.log("NO NAME");
+    }else{
+        $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
+    }
+    
+    var locationClicked = false;
+    $(".button-collapse").sideNav();
+
+    $("#enterButton").on("click", function() {
+        var username = $("#name").val();
+        console.log(username);
+        if (username !== "" && username !== null) {
+            localStorage.setItem("squilloName", username);
+        $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
+
+            // localStorage.setItem("locationClicked", locationClicked);
+        }
+
+    })
+
+});
 
 
