@@ -55,7 +55,7 @@ main {
 }
 
 .cardSection {
-	display: none;
+	/*display: none;*/
     margin-top: 50px;
     margin-bottom: 50px;
 }

@@ -1,3 +1,77 @@
+//<<<<<<< js_updates
+// <<<<<<< HEAD
+$(document).ready(function() {
+	
+    $(".button-collapse").sideNav();
+    //$('.modal').modal();
+    $('#modal1').modal('open');
+
+});
+
+var zillowURL = "https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz1fpm5qkz2tn_aui2x&state=wa&city=seattle&childtype=neighborhood";
+
+$.ajax({
+   url: zillowURL,
+   method: "GET"
+}).done(function(response) {
+   console.log(response);
+   for (var key in response) {
+    var levelOne = response[key];
+    console.log(levelOne);
+    for (var property in levelOne) {
+        var values = levelOne[property];
+        console.log(values); //object object
+        console.log(values.request);
+        // for (var key in values) {
+        //     var content = values[key];
+        //     console.log(content);
+        // }
+    }
+    
+    } 
+   // console.log(xmlToJson(response.Object));
+   // console.log(xmlToJson(response[1]));
+});
+
+//=====================================================
+
+// for (var key in trivia) {
+
+//     var levelOne = trivia[key];
+//     console.log("This is levelOne " + levelOne); //object object
+  
+//   var levelTwo = levelOne.question;
+//   console.log("This is levelTwo " + levelTwo); //One of these a day keeps the doctor away;   Two plus Two is...
+//   console.log("This is the first question " + levelTwo[0]);
+
+  
+//   var levelTwoQues = levelOne.answerA;
+//   console.log("This is levelTwoQues " + levelTwoQues); //apple true;   ten, false; 
+  
+//   var levelTwoQuesBool = levelTwoQues[1];
+//   console.log("This is levelTwoQuesBool " + levelTwoQuesBool);// false  true
+
+//   for (var property in levelOne) {
+//     var values = levelOne[property];
+//     console.log("This is levelOne[property] " + levelOne[property]); //all property values
+//     if (Array.isArray(values)) {
+//       console.log("this is an array " + values);
+//       console.log(values[0]);
+//       var checkAnswer = values[1];
+//       if (checkAnswer = true) {
+//         console.log(property);
+//       }
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+=======
 var singleFamily = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
 $.ajax({
@@ -117,6 +191,7 @@ $.ajax({
         });
     });
 });
+//>>>>>>> master
 
 
 
@@ -126,7 +201,14 @@ $.ajax({
 
 
 
+//<<<<<<< js_updates
+//================================================
 
+// =======
+// >>>>>>> 902045d56a13265c52a39e3c7fe9aca208957734
+//=======
+
+//>>>>>>> master
 function initMap() {
 
     var map = new google.maps.Map(document.getElementById('map'), {
