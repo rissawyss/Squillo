@@ -24,6 +24,10 @@ main {
     flex: 1 0 auto;
 }
 
+.header {
+	height:500px;
+}
+
 #hi {
 	padding: 0 15px;
 	letter-spacing: 1px;
@@ -31,21 +35,21 @@ main {
 
 #map {
     height: 450px;
-    width: 40%;
+    /*width: 40%;*/
 
 }
 
 .querySection {
 	display: block;
-    height: 450px;
+    height: 450px; 
+    background-color:;   
 }
 
-.introSection {
-	padding-top: 80px;
-	padding-bottom: 80px;
-    box-shadow: 0px 2px 2px 0 rgba(0,0,0,0.12);
-
+.query {
+	margin-top:40px;
 }
+
+
 .info-row {
 	overflow: auto;
 }
@@ -59,3 +63,16 @@ main {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+nav {
+	height:80px;
+	line-height:80px;
+}
+
+.logo {
+	height: 60px;
+	display:block;
+	margin-top:10px;
+
+}
+
