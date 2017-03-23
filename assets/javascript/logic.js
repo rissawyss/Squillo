@@ -104,7 +104,7 @@ $.ajax({
 
                             var p = $("<p>").addClass("info-row");;
                             var name = $("<span>").html(response.dataset.name).addClass("left");
-                            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                            var data = $("<span>").html(response.dataset.data[0][1] + "%").addClass("right");
                             
                             $("#results").append(p);
                             p.append(name);
