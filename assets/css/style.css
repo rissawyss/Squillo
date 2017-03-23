@@ -58,6 +58,11 @@ main {
 	
 }
 
+.realEstateIcons {
+	height:50px;
+	width:50px;
+}
+
 .cardSection {
 	/*display: none;*/
     margin-top: 50px;
