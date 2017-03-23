@@ -35,5 +35,8 @@ function xmlToJson(xml) {
 		}
 	}
 	return obj;
+//<<<<<<< js_updates
 	//console.log(obj);
+=======
+//>>>>>>> master
 };
