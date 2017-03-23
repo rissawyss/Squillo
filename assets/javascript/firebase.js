@@ -12,8 +12,18 @@
   var database = firebase.database();
 
   //var squilloName = ""; local storage established on logic.js
-  var zips = ""; //need appropriate variable for each saved zip
+  var name = "";
+  var zip = ""; //need appropriate variable for each saved zip
+  var singleFamilyData = "";
+  var medianRentData = "";
+  var medianListData = "";
+  var medianSaleData = "";
+  var bdrm1Data = "";
+  var bdrm2Data = "";
+  var foreclosureData = "";
+  var salesTaxData = "";
   var favs = [];
+
 
 
 
@@ -21,26 +31,49 @@
   function saveUser() {
 	event.preventDefault();
 
-		database.ref().set({
-	    squilloName: squilloName
+	name = $("#name").val();
+
+		database.ref().push({
+	    name: name
 	    // favs: favs 
 	  });
 
 }
 
 //************* this saveFavZip funtion needs to be called when user clicks to add favorite. Need variable to capture zip.*********
-function saveFavZip() {
+$("#save-btn").on("click", function(event) {
 	event.preventDefault();
-	zips = $("#zip-input").val().trim();
-	favs.push(zips);
-	console.log(favs);
+	zip = $("#zip-display").text();
+	singleFamilyData = $("#singleFamilyData").text();
+	medianRentData = $("#medianRentData").text();
+	medianListData = $("#medianListData").text();
+	medianSaleData = $("#medianSaleData").text();
+	bdrm1Data = $("#bdrm1Data").text();
+	bdrm2Data = $("#bdrm2Data").text();
+	foreclosureData = $("#foreclosureData").text();
+	salesTaxData = $("#salesTaxData").text();
+
+	console.log("zip: " + zip);
+	console.log("SingleFamilyData: " + singleFamilyData);
+	console.log("MedianRentData: " + medianRentData);
+	console.log("MedianListData: " + medianListData);
+	console.log("MedianSaleData: " + medianSaleData);
+	console.log("BDRM1Data: " + bdrm1Data);
+	console.log("BDRM2Data: " + bdrm2Data);
+	console.log("ForeclosureData: " + foreclosureData);
+	console.log("salesTaxData: " + salesTaxData);
+
+
+
+
+	// favs.push(zips);
+	// console.log(favs);
+
 
 	
-	localStorage.setItem("favs", favs);
+	// localStorage.setItem("favs", favs);
 
-		database.ref().update({
-	    favs: favs
+	// 	database.ref().update({
+	//     favs: favs
 
 	});
-
-}
