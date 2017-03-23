@@ -1,83 +1,3 @@
-//<<<<<<< js_updates
-var singleFamily = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
-//=======
-//<<<<<<< js_updates
-// <<<<<<< HEAD
-$(document).ready(function() {
-	
-    $(".button-collapse").sideNav();
-    //$('.modal').modal();
-    $('#modal1').modal('open');
-
-});
-
-var zillowURL = "https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz1fpm5qkz2tn_aui2x&state=wa&city=seattle&childtype=neighborhood";
-//>>>>>>> master
-
-$.ajax({
-    url: singleFamily,
-    method: "GET"
-}).done(function(response) {
-    console.log(response);
-
-    var p = $("<p>").addClass("info-row");
-    var name = $("<span>").html(response.dataset.name).addClass("left");
-    var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
-
-    $("#results").append(p);
-    p.append(name);
-    p.append(data);
-
-    var medianRent = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_RMP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
-
-    $.ajax({
-        url: medianRent,
-        method: "GET"
-    }).done(function(response) {
-        console.log(response);
-
-        var p = $("<p>").addClass("info-row");;
-        var name = $("<span>").html(response.dataset.name).addClass("left");
-        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
-
-        $("#results").append(p);
-        p.append(name);
-        p.append(data);
-
-        var medianList = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_MLP?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
-
-        $.ajax({
-            url: medianList,
-            method: "GET"
-        }).done(function(response) {
-            console.log(response);
-
-            var p = $("<p>").addClass("info-row");;
-            var name = $("<span>").html(response.dataset.name).addClass("left");
-            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
-
-            $("#results").append(p);
-            p.append(name);
-            p.append(data);
-
-            var medianSale = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_MSP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
-
-//<<<<<<< js_updates
-            $.ajax({
-                url: medianSale,
-                method: "GET"
-            }).done(function(response) {
-                console.log(response);
-
-                var p = $("<p>").addClass("info-row");;
-                var name = $("<span>").html(response.dataset.name).addClass("left");
-                var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
-
-                $("#results").append(p);
-                p.append(name);
-                p.append(data);
-//=======
-//=======
 var singleFamily = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
 $.ajax({
@@ -184,65 +104,7 @@ $.ajax({
 
                             var p = $("<p>").addClass("info-row");;
                             var name = $("<span>").html(response.dataset.name).addClass("left");
-                            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
-                            
-                            $("#results").append(p);
-                            p.append(name);
-                            p.append(data);
-
-                        });
-                    });
-                });
-            });
-        });
-    });
-});
-//>>>>>>> master
-//>>>>>>> master
-
-                var bdrm1 = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_1B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
-
-                $.ajax({
-                    url: bdrm1,
-                    method: "GET"
-                }).done(function(response) {
-                    console.log(response);
-
-                    var p = $("<p>").addClass("info-row");;
-                    var name = $("<span>").html(response.dataset.name).addClass("left");
-                    var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
-
-                    $("#results").append(p);
-                    p.append(name);
-                    p.append(data);
-
-                    var bdrm2 = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_2B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
-
-                    $.ajax({
-                        url: bdrm2,
-                        method: "GET"
-                    }).done(function(response) {
-                        console.log(response);
-
-                        var p = $("<p>").addClass("info-row");;
-                        var name = $("<span>").html(response.dataset.name).addClass("left");
-                        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
-
-                        $("#results").append(p);
-                        p.append(name);
-                        p.append(data);
-
-                        var foreclosure = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_FR.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
-
-                        $.ajax({
-                            url: foreclosure,
-                            method: "GET"
-                        }).done(function(response) {
-                            console.log(response);
-
-                            var p = $("<p>").addClass("info-row");;
-                            var name = $("<span>").html(response.dataset.name).addClass("left");
-                            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                            var data = $("<span>").html(response.dataset.data[0][1] + "%").addClass("right");
                             
                             $("#results").append(p);
                             p.append(name);
@@ -283,20 +145,7 @@ $.ajax({
       });
 
 
-//<<<<<<< js_updates
 
-//=======
-
-
-//<<<<<<< js_updates
-//================================================
-
-// =======
-// >>>>>>> 902045d56a13265c52a39e3c7fe9aca208957734
-//=======
-
-//>>>>>>> master
-//>>>>>>> master
 function initMap() {
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -433,8 +282,4 @@ $(document).ready(function() {
 
     })
 
-//<<<<<<< js_updates
 });
-//=======
-});
-//>>>>>>> master
