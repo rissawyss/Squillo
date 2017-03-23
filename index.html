@@ -20,7 +20,7 @@
                 <a href="#!" class="brand-logo">Squillo Logo</a>
                 <!-- Menu Links that hide on Medium and smaller devices -->
                 <ul class="right hide-on-med-and-down">
-                	<li id="hi"></li>
+                    <li id="hi"></li>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Favs</a></li>
                 </ul>
@@ -38,7 +38,7 @@
     </header>
     <main>
         <!-- Search -->
-        <section class="searchSection">
+        <section class="introSection">
             <div class="row">
                 <h3 class="header center black-text">Which zip code are you curious about?</h3>
                 <div class="col s12 center">
@@ -52,8 +52,19 @@
             </div>
         </section>
         <!-- Info -->
-        <section class="infoSection">
+        <section class="querySection">
             <div id="map" class="right"></div>
+        </section>
+        <!-- Info -->
+        <section class="infoSection center">
+            <div class="row">
+                <div id="results" class="col m10 blue-grey white-text">
+                    <h3 id="zip-display">90020</h3>
+                    
+                </div>
+            </div>
+            <div class="row">
+            <div id="salesTaxData" class="col m10 blue-grey white-text"></div>
         </section>
         <!-- Cards -->
         <section class="cardSection">
@@ -130,12 +141,11 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARhPeu596nXJrWQNKL-YoIXwkV0MbhCW0&callback=initMap&language=en&region=US&&libraries=places"></script>
-    <script type="text/javascript" src="assets/javascript/firebase.js"></script>
     <script type="text/javascript" src="assets/javascript/xml-to-json.js"></script>
     <script type="text/javascript" src="assets/javascript/logic.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <script type="text/javascript" src="assets/javascript/firebase.js"></script>
     <!-- Compiled and minified JavaScript for Materialize-->
-    
-    
 </body>
 
 </html>
