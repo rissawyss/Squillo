@@ -34,5 +34,11 @@ function xmlToJson(xml) {
 			}
 		}
 	}
+	
 	return obj;
+<<<<<<< HEAD
 };
+=======
+
+};
+>>>>>>> da03487580dfa566f706aa79b44cac1272724823
