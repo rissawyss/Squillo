@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Logo Favicon -->
+    <link rel="icon" href="assets/images/squillo_favicon.png" type="image/png" sizes="16x16">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -17,7 +20,7 @@
     <header>
         <nav class="blue-grey darken-4" role="navigation">
             <div class="nav-wrapper container">
-                <a href="#!" class="brand-logo">Squillo Logo</a>
+                <a class="brand-logo"><img src="assets/images/squillo_logo_no_text_60px.png" class="logo"</a>
                 <!-- Menu Links that hide on Medium and smaller devices -->
                 <ul class="right hide-on-med-and-down">
                     <li id="hi"></li>
@@ -39,9 +42,17 @@
     <main>
         <!-- Search -->
         <section class="introSection">
-            <div class="row">
-                <h3 class="header center black-text">Which zip code are you curious about?</h3>
+            
                 <div class="col s12 center">
+                    <img src="assets/images/AdobeStock_118489449_WM.jpeg" class="main_image">
+                </div>
+            
+        </section>
+        <!-- Info -->
+        <section class="querySection">
+            <div class="row">
+                    <div class="col s6 center query">
+                    <h3 class="">Which zip code are you curious about?</h3>                
                     <form class="input-field inline">
                         <input id="zipcode" type="text" class="validate">
                         <label for="zipcode" data-error="wrong" data-success="right" class="left-align">Enter Your Zip Code</label>
@@ -49,14 +60,11 @@
                         <button class="btn waves-effect waves-light teal" type="submit" name="action" id="currentLocationBtn">Use Current Location</button>
                     </form>
                 </div>
+                    <div id="map" class="col s6"></div>
             </div>
         </section>
         <!-- Info -->
-        <section class="querySection">
-            <div id="map" class="right"></div>
-        </section>
-        <!-- Info -->
-        <section class="infoSection center">
+        <section class="infoSection">
             <div class="row">
                 <div id="results" class="col m10 blue-grey white-text">
                     <h3 id="zip-display">90020</h3>
