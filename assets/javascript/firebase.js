@@ -12,35 +12,33 @@
   var database = firebase.database();
 
   //var squilloName = ""; local storage established on logic.js
-  var zips = ""; //need appropriate variable for each saved zip
+  // var zips = ""; //need appropriate variable for each saved zip
   var favs = [];
 
 
 
 //************* this saveUser function needs to be called on the logic.js file when user entered*********
-  function saveUser() {
-	event.preventDefault();
+function saveUser(username) {
 
-		database.ref().set({
-	    squilloName: squilloName
+		database.ref().push({
+	    squilloName: username,
 	    // favs: favs 
 	  });
 
 }
 
 //************* this saveFavZip funtion needs to be called when user clicks to add favorite. Need variable to capture zip.*********
-function saveFavZip() {
-	event.preventDefault();
-	zips = $("#zip-input").val().trim();
-	favs.push(zips);
+function saveToFavs(zip) {
+	
+	favs.push(zip);
 	console.log(favs);
 
 	
 	localStorage.setItem("favs", favs);
 
-		database.ref().update({
-	    favs: favs
-
+	database.ref("squilloName").update({
+    	favs: favs
 	});
+
 
 }

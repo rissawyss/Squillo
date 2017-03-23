@@ -1,4 +1,6 @@
+
 function blah(zip) {
+
 
     $("#results").empty();
     var singleFamily = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
@@ -120,32 +122,33 @@ function blah(zip) {
             });
         });
     });
+    
 };
 
-var zip = "90020";
-console.log(zip);
+// var zip = "90020";
+// console.log(zip);
 
-var queryURL = "https://taxrates.api.avalara.com:443/postal?country=usa&postal=" + zip + "&apikey=OOkTEd0jbFpfXlBklm0byMJ6hZ1%2BRGMxHIHCwpCz8p1fdRC5ULNz5uF6Ks4HTqsmZmZA337Kv7mK4hdKI5Poag%3D%3D";
+// var queryURL = "https://taxrates.api.avalara.com:443/postal?country=usa&postal=" + zip + "&apikey=OOkTEd0jbFpfXlBklm0byMJ6hZ1%2BRGMxHIHCwpCz8p1fdRC5ULNz5uF6Ks4HTqsmZmZA337Kv7mK4hdKI5Poag%3D%3D";
 
-console.log(queryURL);
+// console.log(queryURL);
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).done(function(response) {
-    var tax = response.totalRate;
-    console.log(tax);
-    var taxArea = response.rates[0];
-    var taxState = response.rates[1];
-    console.log(taxArea.name);
-    console.log(taxState.name);
+// $.ajax({
+//     url: queryURL,
+//     method: "GET"
+// }).done(function(response) {
+//     var tax = response.totalRate;
+//     console.log(tax);
+//     var taxArea = response.rates[0];
+//     var taxState = response.rates[1];
+//     console.log(taxArea.name);
+//     console.log(taxState.name);
 
 
-    var p = $("<p>").text("Sales Tax for " + taxArea.name + " , " + taxState.name + " : " + tax + "%");
+//     var p = $("<p>").text("Sales Tax for " + taxArea.name + " , " + taxState.name + " : " + tax + "%");
 
-    $("#salesTaxData").append(p);
+//     $("#salesTaxData").append(p);
 
-});
+// });
 
 
 
@@ -194,6 +197,7 @@ function initMap() {
                     console.log(response.results[0].address_components[7].short_name);
                     var currZip = response.results[0].address_components[7].short_name;
                     blah(currZip);
+                    $("#save-btn").on("click", saveToFavs(currZip));
                     infoWindow.setContent("Current Zip: " + currZip);
                 })
 
@@ -216,18 +220,20 @@ function initMap() {
     $("#searchBtn").on("click", function() {
         event.preventDefault();
 
+        var zip = $("#zipcode").val();
+        blah(zip);
+        $("#save-btn").on("click", saveToFavs(zip));
 
-        geocodeAddress(geocoder, map);
+
+
+        geocodeAddress(geocoder, map, zip);
         $("#zipcode").val("");
 
     })
 
 }
 
-function geocodeAddress(geocoder, resultsMap) {
-
-    var zip = $("#zipcode").val();
-    blah(zip);
+function geocodeAddress(geocoder, resultsMap, zip) {
 
     geocoder.geocode({
         'address': zip
@@ -281,10 +287,12 @@ $(document).ready(function() {
         if (username !== "" && username !== null) {
             localStorage.setItem("squilloName", username);
             $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
-
+            saveUser(username);
             // localStorage.setItem("locationClicked", locationClicked);
         }
 
     })
 
 });
+
+
