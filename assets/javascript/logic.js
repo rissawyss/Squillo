@@ -1,4 +1,7 @@
 //<<<<<<< js_updates
+var singleFamily = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+//=======
+//<<<<<<< js_updates
 // <<<<<<< HEAD
 $(document).ready(function() {
 	
@@ -9,69 +12,72 @@ $(document).ready(function() {
 });
 
 var zillowURL = "https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz1fpm5qkz2tn_aui2x&state=wa&city=seattle&childtype=neighborhood";
+//>>>>>>> master
 
 $.ajax({
-   url: zillowURL,
-   method: "GET"
+    url: singleFamily,
+    method: "GET"
 }).done(function(response) {
-   console.log(response);
-   for (var key in response) {
-    var levelOne = response[key];
-    console.log(levelOne);
-    for (var property in levelOne) {
-        var values = levelOne[property];
-        console.log(values); //object object
-        console.log(values.request);
-        // for (var key in values) {
-        //     var content = values[key];
-        //     console.log(content);
-        // }
-    }
-    
-    } 
-   // console.log(xmlToJson(response.Object));
-   // console.log(xmlToJson(response[1]));
-});
+    console.log(response);
 
-//=====================================================
+    var p = $("<p>").addClass("info-row");
+    var name = $("<span>").html(response.dataset.name).addClass("left");
+    var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
 
-// for (var key in trivia) {
+    $("#results").append(p);
+    p.append(name);
+    p.append(data);
 
-//     var levelOne = trivia[key];
-//     console.log("This is levelOne " + levelOne); //object object
-  
-//   var levelTwo = levelOne.question;
-//   console.log("This is levelTwo " + levelTwo); //One of these a day keeps the doctor away;   Two plus Two is...
-//   console.log("This is the first question " + levelTwo[0]);
+    var medianRent = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_RMP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
-  
-//   var levelTwoQues = levelOne.answerA;
-//   console.log("This is levelTwoQues " + levelTwoQues); //apple true;   ten, false; 
-  
-//   var levelTwoQuesBool = levelTwoQues[1];
-//   console.log("This is levelTwoQuesBool " + levelTwoQuesBool);// false  true
+    $.ajax({
+        url: medianRent,
+        method: "GET"
+    }).done(function(response) {
+        console.log(response);
 
-//   for (var property in levelOne) {
-//     var values = levelOne[property];
-//     console.log("This is levelOne[property] " + levelOne[property]); //all property values
-//     if (Array.isArray(values)) {
-//       console.log("this is an array " + values);
-//       console.log(values[0]);
-//       var checkAnswer = values[1];
-//       if (checkAnswer = true) {
-//         console.log(property);
-//       }
-//     }
-//   }
-// }
+        var p = $("<p>").addClass("info-row");;
+        var name = $("<span>").html(response.dataset.name).addClass("left");
+        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
 
+        $("#results").append(p);
+        p.append(name);
+        p.append(data);
 
+        var medianList = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_MLP?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
+        $.ajax({
+            url: medianList,
+            method: "GET"
+        }).done(function(response) {
+            console.log(response);
 
+            var p = $("<p>").addClass("info-row");;
+            var name = $("<span>").html(response.dataset.name).addClass("left");
+            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
 
+            $("#results").append(p);
+            p.append(name);
+            p.append(data);
 
+            var medianSale = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_MSP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
-=======
+//<<<<<<< js_updates
+            $.ajax({
+                url: medianSale,
+                method: "GET"
+            }).done(function(response) {
+                console.log(response);
+
+                var p = $("<p>").addClass("info-row");;
+                var name = $("<span>").html(response.dataset.name).addClass("left");
+                var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+
+                $("#results").append(p);
+                p.append(name);
+                p.append(data);
+//=======
+//=======
 var singleFamily = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
 $.ajax({
@@ -192,13 +198,94 @@ $.ajax({
     });
 });
 //>>>>>>> master
+//>>>>>>> master
+
+                var bdrm1 = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_1B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+
+                $.ajax({
+                    url: bdrm1,
+                    method: "GET"
+                }).done(function(response) {
+                    console.log(response);
+
+                    var p = $("<p>").addClass("info-row");;
+                    var name = $("<span>").html(response.dataset.name).addClass("left");
+                    var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+
+                    $("#results").append(p);
+                    p.append(name);
+                    p.append(data);
+
+                    var bdrm2 = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_2B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+
+                    $.ajax({
+                        url: bdrm2,
+                        method: "GET"
+                    }).done(function(response) {
+                        console.log(response);
+
+                        var p = $("<p>").addClass("info-row");;
+                        var name = $("<span>").html(response.dataset.name).addClass("left");
+                        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+
+                        $("#results").append(p);
+                        p.append(name);
+                        p.append(data);
+
+                        var foreclosure = "https://www.quandl.com/api/v3/datasets/ZILL/Z90020_FR.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+
+                        $.ajax({
+                            url: foreclosure,
+                            method: "GET"
+                        }).done(function(response) {
+                            console.log(response);
+
+                            var p = $("<p>").addClass("info-row");;
+                            var name = $("<span>").html(response.dataset.name).addClass("left");
+                            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                            
+                            $("#results").append(p);
+                            p.append(name);
+                            p.append(data);
+
+                        });
+                    });
+                });
+            });
+        });
+    });
+});
 
 
+  var zip = "90020";
+  console.log(zip);
+
+  var queryURL = "https://taxrates.api.avalara.com:443/postal?country=usa&postal="+zip+"&apikey=OOkTEd0jbFpfXlBklm0byMJ6hZ1%2BRGMxHIHCwpCz8p1fdRC5ULNz5uF6Ks4HTqsmZmZA337Kv7mK4hdKI5Poag%3D%3D";
+
+  console.log(queryURL);
+
+    $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+            var tax = response.totalRate;
+            console.log(tax);
+            var taxArea = response.rates[0];
+            var taxState = response.rates[1];
+            console.log(taxArea.name);
+            console.log(taxState.name);
 
 
+            var p = $("<p>").text("Sales Tax for " + taxArea.name + " , " + taxState.name + " : "  + tax + "%");
+
+            $("#salesTaxData").append(p);
+
+      });
 
 
+//<<<<<<< js_updates
 
+//=======
 
 
 //<<<<<<< js_updates
@@ -208,6 +295,7 @@ $.ajax({
 // >>>>>>> 902045d56a13265c52a39e3c7fe9aca208957734
 //=======
 
+//>>>>>>> master
 //>>>>>>> master
 function initMap() {
 
@@ -345,4 +433,8 @@ $(document).ready(function() {
 
     })
 
+//<<<<<<< js_updates
 });
+//=======
+});
+//>>>>>>> master
