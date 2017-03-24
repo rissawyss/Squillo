@@ -22,7 +22,12 @@
   var bdrm2Data = "";
   var foreclosureData = "";
   var salesTaxData = "";
-  var favs = [];
+  var saved = [];
+  var userinfo;
+  var favorites;
+
+  var user = firebase.auth().currentUser;
+  console.log(user);
 
 
 
@@ -33,10 +38,23 @@
 
 	name = $("#name").val();
 
+//=====================================================
+	userinfo = database.ref("'" + name + "'");
+
+
+	// userinfo.push({
+	// 	favorites: favs
+	// })
+//=====================================================
 		database.ref().push({
-	    name: name
-	    // favs: favs 
+	    name: name,
+	    saved: saved
+	    //saved: userinfo.push({saved: saved}) 
 	  });
+
+// 		userinfo.child(name).set({
+//   		saved: saved
+// });
 
 }
 
@@ -63,17 +81,57 @@ $("#save-btn").on("click", function(event) {
 	console.log("ForeclosureData: " + foreclosureData);
 	console.log("salesTaxData: " + salesTaxData);
 
+	var newFav = {
+  		zip: zip,
+		singleFamilyData: singleFamilyData,
+		medianRentData: medianRentData,
+		medianListData: medianListData,
+		medianSaleData: medianSaleData,
+		bdrm1Data: bdrm1Data,
+		bdrm2Data: bdrm2Data,
+		foreclosureData: foreclosureData,
+		salesTaxData: salesTaxData
+};
+
+	// database.ref().push({
+	// 	zip: zip,
+	// 	singleFamilyData: singleFamilyData,
+	// 	medianRentData: medianRentData,
+	// 	medianListData: medianListData,
+	// 	medianSaleData: medianSaleData,
+	// 	bdrm1Data: bdrm1Data,
+	// 	bdrm2Data: bdrm2Data,
+	// 	foreclosureData: foreclosureData,
+	// 	salesTaxData: salesTaxData
+	// })
 
 
 
-	// favs.push(zips);
-	// console.log(favs);
 
+	saved.push(newFav);
+	// console.log(saved);
 
+	//userinfo.child(name).push({newFav});
+	userinfo.child(name).update({saved});
 	
-	// localStorage.setItem("favs", favs);
+	// localStorage.setItem("saved", saved);
 
-	// 	database.ref().update({
-	//     favs: favs
+		database.ref().update({
+	    saved: saved
 
 	});
+
+	});
+
+
+	database.ref().on("value", function(snapshot) {
+
+      // storing the snapshot.val() in a variable for convenience
+      console.log("name: " + snapshot.val().name);
+      console.log("everything else: " + snapshot.val().saved);
+      var card = snapshot.val().saved;
+      var card1 = snapshot.val().saved[0];
+      var card2 = snapshot.val().saved[1];
+      console.log(card1);
+      console.log(card2);
+  });
