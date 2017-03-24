@@ -14,11 +14,12 @@ function getZipInfo(zip) {
 
         var p = $("<p>").addClass("info-row");
         var name = $("<span>").html(response.dataset.name).addClass("left");
-        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "singleFamilyData");
 
         $("#results").append(p);
         p.append(name);
         p.append(data);
+        console.log($("#singleFamilyData").text());
 
         var medianRentURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_RMP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
@@ -30,7 +31,7 @@ function getZipInfo(zip) {
 
             var p = $("<p>").addClass("info-row");;
             var name = $("<span>").html(response.dataset.name).addClass("left");
-            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "medianRentData");
 
             $("#results").append(p);
             p.append(name);
@@ -46,7 +47,7 @@ function getZipInfo(zip) {
 
                 var p = $("<p>").addClass("info-row");;
                 var name = $("<span>").html(response.dataset.name).addClass("left");
-                var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "medianListData");
 
                 $("#results").append(p);
                 p.append(name);
@@ -62,7 +63,7 @@ function getZipInfo(zip) {
 
                     var p = $("<p>").addClass("info-row");;
                     var name = $("<span>").html(response.dataset.name).addClass("left");
-                    var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                    var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "medianSaleData");
 
                     $("#results").append(p);
                     p.append(name);
@@ -78,7 +79,7 @@ function getZipInfo(zip) {
 
                         var p = $("<p>").addClass("info-row");;
                         var name = $("<span>").html(response.dataset.name).addClass("left");
-                        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "bdrm1Data");
 
                         $("#results").append(p);
                         p.append(name);
@@ -94,7 +95,7 @@ function getZipInfo(zip) {
 
                             var p = $("<p>").addClass("info-row");;
                             var name = $("<span>").html(response.dataset.name).addClass("left");
-                            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "bdrm2Data");
 
                             $("#results").append(p);
                             p.append(name);
@@ -110,7 +111,7 @@ function getZipInfo(zip) {
 
                                 var p = $("<p>").addClass("info-row");;
                                 var name = $("<span>").html(response.dataset.name).addClass("left");
-                                var data = $("<span>").html(response.dataset.data[0][1] + "%").addClass("right");
+                                var data = $("<span>").html(response.dataset.data[0][1] + "%").addClass("right").attr("id", "foreclosureData");
 
                                 $("#results").append(p);
                                 p.append(name);
@@ -131,6 +132,7 @@ function getZipInfo(zip) {
                                     $("#results").append(p);
                                     p.append(name);
                                     p.append(data);
+
 
                                 });
                             });
@@ -212,15 +214,11 @@ function initMap() {
         event.preventDefault();
 
         var zip = $("#zipcode").val();
-        getZipInfo(zip);
-        $("#save-btn").on("click", saveToFavs(zip));
-
-
-
         geocodeAddress(geocoder, map, zip);
+        getZipInfo(zip);
         $("#zipcode").val("");
 
-    })
+    });
 
 }
 
@@ -278,7 +276,10 @@ $(document).ready(function() {
         if (username !== "" && username !== null) {
             localStorage.setItem("squilloName", username);
             $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
+
             saveUser(username);
+            $("#save-btn").on("click", saveToFavs(username));
+
             // localStorage.setItem("locationClicked", locationClicked);
         }
 
@@ -287,18 +288,19 @@ $(document).ready(function() {
 });
 
 $("#go-home").on("click", function(){
+
     $(".introSection").css("display", "block");
     $(".querySection").css("display", "block");
     $(".infoSection").css("display", "block");
     $(".cardSection").css("display", "none");
-    
 
 });
+
 $("#go-favs").on("click", function(){
+
     $(".introSection").css("display", "none");
     $(".querySection").css("display", "none");
     $(".infoSection").css("display", "none");
     $(".cardSection").css("display", "block");
-    
 
 });
