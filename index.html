@@ -20,7 +20,7 @@
     <header>
         <nav class="blue-grey darken-4" role="navigation">
             <div class="nav-wrapper container header">
-                <a class="brand-logo"><img src="assets/images/squillo_logo_no_text_60px.png" class="logo"</a>
+                <a class="brand-logo"><img src="assets/images/squillo_logo_no_text_60px.png" class="logo"></a>
                 <!-- Menu Links that hide on Medium and smaller devices -->
                 <ul class="right hide-on-med-and-down">
                     <li id="hi"></li>
@@ -43,16 +43,21 @@
         <!-- Search -->
         <section class="introSection">
 
-                <div class="col s12 center">
-                    <img src="assets/images/neighborhood_max.jpg" class="responsive-img">
+            
+                <div class="col s12 center" id="img-container">
+                    <img src="assets/images/neighborhood_max72.png" class="responsive-img">                                      
                 </div>
+                                
+          
 
         </section>
         <!-- Info -->
         <section class="querySection">
             <div class="row">
-                    <div class="col s6 center query">
-                    <h3 class="">Which zip code are you curious about?</h3>
+
+                    <div class="col s12 l6 center query">
+                    <h3 class="">Which zip code are you curious about?</h3>                
+
                     <form class="input-field inline">
                         <input id="zipcode" type="text" class="validate">
                         <label for="zipcode" data-error="wrong" data-success="right" class="left-align">Enter Your Zip Code</label>
@@ -60,7 +65,7 @@
                         <button class="btn waves-effect waves-light teal" type="submit" name="action" id="currentLocationBtn">Use Current Location</button>
                     </form>
                 </div>
-                    <div id="map" class="col s6"></div>
+                    <div id="map" class="col s12 l6"></div>
             </div>
         </section>
         <!-- Info -->
@@ -68,13 +73,15 @@
 
             <div class="row infobox">
                 <div class="col m12 blue-grey darken-3">
-                    <button>Save Me!</button>
-                    <h3 id="zip-display" class="white-text center">90020</h3>
 
+                    <div class="col s12">
+                    <div class="row">
+                    <a class="btn-floating btn-large waves-effect waves-light red" id="fave-heart"><img src="assets/images/heart-white-outline-no-fill.png" class="heart"></a>                    
+                    <h3 id="zip-display" class="white-text center">90020</h3>   
+                    </div>
+                    </div>
+                    <div class="col s12 m6 l3 data-cards">
 
-
-
-                    <div class="col s12 m3">
                         <div class="white-text center">
                             <img src="assets/images/singlefam.png" class="realEstateIcons">
                             <div id="singlefam">
@@ -83,7 +90,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m3">
+
+                    <div class="col s12 m6 l3 data-cards">
+
                         <div class="white-text center">
                             <img src="assets/images/rent.png" class="realEstateIcons">
                             <div id="rent">
@@ -92,7 +101,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m3">
+
+                    <div class="col s12 m6 l3 data-cards">
+
                         <div class="white-text center">
                             <img src="assets/images/sale.png" class="realEstateIcons">
                             <div class="card-content" id="sale">
@@ -101,7 +112,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m3">
+
+                    <div class="col s12 m6 l3 data-cards">
+
                         <div class="white-text center">
                             <img src="assets/images/sold.png" class="realEstateIcons">
                             <div class="card-content" id="sold">
@@ -110,7 +123,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m3">
+
+                    <div class="col s12 m6 l3 data-cards">
+
                         <div class="white-text center">
                             <img src="assets/images/1br.png" class="realEstateIcons">
                             <div class="card-content" id="1br">
@@ -119,7 +134,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m3">
+
+                    <div class="col s12 m6 l3 data-cards">
+
                         <div class="white-text center">
                             <img src="assets/images/2br.png" class="realEstateIcons">
                             <div class="card-content" id="2br">
@@ -128,7 +145,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m3">
+
+                    <div class="col s12 m6 l3 data-cards">
+
                         <div class="white-text center">
                             <img src="assets/images/foreclose.png" class="realEstateIcons">
                             <div class="card-content" id="foreclose">
@@ -137,7 +156,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m3">
+
+                    <div class="col s12 m6 l3 data-cards">
+
                         <div class="white-text center">
                             <img src="assets/images/tax.png" class="realEstateIcons">
                             <div class="card-content" id="tax">
@@ -155,7 +176,7 @@
         <!-- Cards -->
         <section class="cardSection">
             <div class="row">
-                <div class="col s12 m2">
+                <div class="col s12 m4 l3">
                     <div class="card blue-grey">
                         <div class="card-content white-text">
                             <span class="card-title">Card Title</span>
@@ -167,7 +188,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m2">
+                <div class="col s12 m4 l3">
                     <div class="card blue-grey">
                         <div class="card-content white-text">
                             <span class="card-title">Card Title</span>
@@ -201,17 +222,20 @@
     <footer class="page-footer blue-grey darken-4">
         <div class="container">
             <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">Rows or Columns</p>
+                <div class="col s12 l4">                    
+                    <ul>                        
+                        <li><a class="grey-text text-lighten-3" href="http://www.fanniemae.com" target="blank">Fannie Mae</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://www.freddiemac.com/" target="blank">Freddie Mac</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.hudhomestore.com" target="blank">HUD Homes</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.fhfa.gov/" target="blank">Federal Finance Housing Agency</a></li>
+                    </ul>
                 </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
+                <div class="col s12 l4">                    
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/home-buying/types-of-home-construction.aspx" target="blank">Types of Home Construction</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/homeownership/home-maintenance-and-repair.aspx" target="blank">Home Maintenance and Repair</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/homeownership/remodeling-your-home.aspx" target="blank">Remodel Your Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/homeownership/design-trends.aspx" target="blank">Design Trends</a></li>                        
                     </ul>
                 </div>
             </div>

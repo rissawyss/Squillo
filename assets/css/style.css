@@ -18,6 +18,23 @@ main {
 	letter-spacing: 1px;	
 }
 
+#img-container {
+	position:relative;
+}
+
+#headline1 {
+	position:absolute;
+	top:30%;
+	width:100%;	
+}
+
+#headline2 {
+	position:absolute;
+	top:45%;
+	width:100%;
+}
+
+
 #map {
     height: 450px;
     /*width: 40%;*/
@@ -31,6 +48,7 @@ main {
 
 .query {
 	margin-top:40px;
+	margin-bottom:40px;
 }
 
 
@@ -38,14 +56,17 @@ main {
 	overflow: auto;
 }
 
-.heart {
-	margin-top:10px;
-	height:30px;
-	width:auto;
+#fave-heart{
+	margin-top:20px;
 }
 
-.infobox {
-	padding-bottom:30px;
+.heart {
+	height:50%;
+	top:12px;	
+}
+
+.info-box {
+	padding-bottom:20px;
 }
 
 #zip-display {
@@ -61,8 +82,7 @@ main {
 }
 
 .realEstateIcons {
-	height:50px;
-	width:50px;
+	height:50px;	
 }
 
 .cardSection {
