@@ -11,11 +11,12 @@ function blah(zip) {
 
         var p = $("<p>").addClass("info-row");
         var name = $("<span>").html(response.dataset.name).addClass("left");
-        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "singleFamilyData");
 
         $("#results").append(p);
         p.append(name);
         p.append(data);
+        console.log($("#singleFamilyData").text());
 
         var medianRent = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_RMP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
@@ -27,7 +28,7 @@ function blah(zip) {
 
             var p = $("<p>").addClass("info-row");;
             var name = $("<span>").html(response.dataset.name).addClass("left");
-            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "medianRentData");
 
             $("#results").append(p);
             p.append(name);
@@ -43,7 +44,7 @@ function blah(zip) {
 
                 var p = $("<p>").addClass("info-row");;
                 var name = $("<span>").html(response.dataset.name).addClass("left");
-                var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "medianListData");
 
                 $("#results").append(p);
                 p.append(name);
@@ -59,7 +60,7 @@ function blah(zip) {
 
                     var p = $("<p>").addClass("info-row");;
                     var name = $("<span>").html(response.dataset.name).addClass("left");
-                    var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                    var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "medianSaleData");
 
                     $("#results").append(p);
                     p.append(name);
@@ -75,7 +76,7 @@ function blah(zip) {
 
                         var p = $("<p>").addClass("info-row");;
                         var name = $("<span>").html(response.dataset.name).addClass("left");
-                        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "bdrm1Data");
 
                         $("#results").append(p);
                         p.append(name);
@@ -91,7 +92,7 @@ function blah(zip) {
 
                             var p = $("<p>").addClass("info-row");;
                             var name = $("<span>").html(response.dataset.name).addClass("left");
-                            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right");
+                            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "bdrm2Data");
 
                             $("#results").append(p);
                             p.append(name);
@@ -107,11 +108,29 @@ function blah(zip) {
 
                                 var p = $("<p>").addClass("info-row");;
                                 var name = $("<span>").html(response.dataset.name).addClass("left");
-                                var data = $("<span>").html(response.dataset.data[0][1] + "%").addClass("right");
+                                var data = $("<span>").html(response.dataset.data[0][1] + "%").addClass("right").attr("id", "foreclosureData");
 
                                 $("#results").append(p);
                                 p.append(name);
                                 p.append(data);
+
+
+                                var salesTax = "https://taxrates.api.avalara.com:443/postal?country=usa&postal=" + zip + "&apikey=OOkTEd0jbFpfXlBklm0byMJ6hZ1%2BRGMxHIHCwpCz8p1fdRC5ULNz5uF6Ks4HTqsmZmZA337Kv7mK4hdKI5Poag%3D%3D";
+
+                                $.ajax({
+                                    url: salesTax,
+                                    method: "GET"
+                                }).done(function(response) {
+                                    var tax = response.totalRate;
+                                    var p = $("<p>").addClass("info-row");;
+                                    var name = $("<span>").html("Sales Tax").addClass("left");
+                                    var data = $("<span>").html(tax + "%").addClass("right").attr("id", "salesTaxData");
+
+                                    $("#results").append(p);
+                                    p.append(name);
+                                    p.append(data);
+
+                                    });
 
                             });
                         });
@@ -122,30 +141,8 @@ function blah(zip) {
     });
 };
 
-var zip = "90020";
-console.log(zip);
-
-var queryURL = "https://taxrates.api.avalara.com:443/postal?country=usa&postal=" + zip + "&apikey=OOkTEd0jbFpfXlBklm0byMJ6hZ1%2BRGMxHIHCwpCz8p1fdRC5ULNz5uF6Ks4HTqsmZmZA337Kv7mK4hdKI5Poag%3D%3D";
-
-console.log(queryURL);
-
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).done(function(response) {
-    var tax = response.totalRate;
-    console.log(tax);
-    var taxArea = response.rates[0];
-    var taxState = response.rates[1];
-    console.log(taxArea.name);
-    console.log(taxState.name);
 
 
-    var p = $("<p>").text("Sales Tax for " + taxArea.name + " , " + taxState.name + " : " + tax + "%");
-
-    $("#salesTaxData").append(p);
-
-});
 
 
 
