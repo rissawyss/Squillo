@@ -16,22 +16,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
     <header>
-        <nav class="blue-grey darken-4" role="navigation">
+        <nav class="blue-grey darken-4 navbar" role="navigation" id="home">
             <div class="nav-wrapper container header">
                 <a class="brand-logo"><img src="assets/images/squillo_logo_no_text_60px.png" class="logo"</a>
                 <!-- Menu Links that hide on Medium and smaller devices -->
                 <ul class="right hide-on-med-and-down">
                     <li id="hi"></li>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Favs</a></li>
+                    <li><a href="#faves">Faves</a></li>
                 </ul>
                 <!-- Side Navigation for Mobile -->
                 <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
                     <li>
                         <a href="#">Home</a>
-                        <a href="#">Faves</a>
+                        <a href="#faves">Faves</a>
                     </li>
                 </ul>
                 <!-- Hamburger Menu Icon -->
@@ -63,97 +63,88 @@
                     <div id="map" class="col s6"></div>
             </div>
         </section>
+        
         <!-- Info -->
-        <section class="infoSection">
+        <section class="infoSection" id="infosection">
 
             <div class="row infobox">
                 <div class="col m12 blue-grey darken-3">
                     <button>Save Me!</button>
-                    <h3 id="zip-display" class="white-text center">90020</h3>
 
-         
+                    <h3 id="zip-display" class="white-text center">90020</h3>   
 
                     
-                    <div class="col s12 m3">
+                    <div class="col s12 m3 data-cards">
                         <div class="white-text center">
                             <img src="assets/images/singlefam.png" class="realEstateIcons">
-                            <div id="singlefam">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
+                            <div id="singleFam">
+                                <!-- append single family info here -->
                             </div>                            
                         </div>
                     </div>
-                    <div class="col s12 m3">
+                    <div class="col s12 m3 data-cards">
                         <div class="white-text center">
                             <img src="assets/images/rent.png" class="realEstateIcons">
                             <div id="rent">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
+                                <!-- append median rent info here -->
                             </div>                            
                         </div>
                     </div>
-                    <div class="col s12 m3">
+                    <div class="col s12 m3 data-cards">
                         <div class="white-text center">
                             <img src="assets/images/sale.png" class="realEstateIcons">
                             <div class="card-content" id="sale">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
+                                <!-- append median list info here -->
                             </div>                            
                         </div>
                     </div>
-                    <div class="col s12 m3">
+                    <div class="col s12 m3 data-cards">
                         <div class="white-text center">
                             <img src="assets/images/sold.png" class="realEstateIcons">
                             <div class="card-content" id="sold">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
+                                <!-- append median sold info here -->
                             </div>                            
                         </div>
                     </div>
-                    <div class="col s12 m3">
+                    <div class="col s12 m3 data-cards">
                         <div class="white-text center">
                             <img src="assets/images/1br.png" class="realEstateIcons">
                             <div class="card-content" id="1br">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
+                                <!-- append 1bedroom info here -->
                             </div>                            
                         </div>
                     </div>
-                    <div class="col s12 m3">
+                    <div class="col s12 m3 data-cards">
                         <div class="white-text center">
                             <img src="assets/images/2br.png" class="realEstateIcons">
                             <div class="card-content" id="2br">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
+                                
                             </div>                            
                         </div>
                     </div>
-                    <div class="col s12 m3">
+                    <div class="col s12 m3 data-cards">
                         <div class="white-text center">
                             <img src="assets/images/foreclose.png" class="realEstateIcons">
                             <div class="card-content" id="foreclose">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
+                                
                             </div>                            
                         </div>
                     </div>
-                    <div class="col s12 m3">
+                    <div class="col s12 m3 data-cards">
                         <div class="white-text center">
                             <img src="assets/images/tax.png" class="realEstateIcons">
                             <div class="card-content" id="tax">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
+                                
                             </div>                            
                         </div>
                     </div>    
                 </div>
 
-            </div>           
-
-
+            </div> 
         </section>
+
         <!-- Cards -->
-        <section class="cardSection">
+        <section class="cardSection" id="faves">
             <div class="row">
                 <div class="col s12 m2">
                     <div class="card blue-grey">
@@ -219,7 +210,7 @@
         <div class="footer-copyright">
             <div class="container">
                 © 2017 3Nodes
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                <a class="grey-text text-lighten-4 right" href="#home">Back to Top</a>
             </div>
         </div>
     </footer>
@@ -233,5 +224,42 @@
     <script type="text/javascript" src="assets/javascript/firebase.js"></script>
     <!-- Compiled and minified JavaScript for Materialize-->
 </body>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, a[href='#home']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
 
 </html>
