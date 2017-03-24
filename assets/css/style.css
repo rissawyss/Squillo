@@ -18,9 +18,22 @@ main {
 	letter-spacing: 1px;	
 }
 
-.flow-text{
-    font-weight: 300;
- }
+#img-container {
+	position:relative;
+}
+
+#headline1 {
+	position:absolute;
+	top:30%;
+	width:100%;	
+}
+
+#headline2 {
+	position:absolute;
+	top:45%;
+	width:100%;
+}
+
 
 #map {
     height: 450px;
@@ -35,6 +48,7 @@ main {
 
 .query {
 	margin-top:40px;
+	margin-bottom:40px;
 }
 
 
@@ -68,8 +82,7 @@ main {
 }
 
 .realEstateIcons {
-	height:50px;
-	width:50px;
+	height:50px;	
 }
 
 .cardSection {
