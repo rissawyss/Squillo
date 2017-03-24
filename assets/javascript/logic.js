@@ -276,6 +276,7 @@ $(document).ready(function() {
         if (username !== "" && username !== null) {
             localStorage.setItem("squilloName", username);
             $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
+            saveUser();
 
             saveUser(username);
             $("#save-btn").on("click", saveToFavs(username));
