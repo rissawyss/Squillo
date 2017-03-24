@@ -1,6 +1,6 @@
 function blah(zip) {
 
-    $(".results").empty();
+    $("#results").empty();
     var singleFamily = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
     $.ajax({
@@ -10,10 +10,10 @@ function blah(zip) {
         console.log(response);
 
         var p = $("<p>").addClass("info-row");
-        var name = $("<span>").html(response.dataset.name + "<br><br>");
-        var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "singleFamilyData");
+        var name = $("<span>").html(response.dataset.name).addClass("left");
+        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "singleFamilyData");
 
-        $("#singleFam").append(p);
+        $("#results").append(p);
         p.append(name);
         p.append(data);
         console.log($("#singleFamilyData").text());
@@ -27,10 +27,10 @@ function blah(zip) {
             console.log(response);
 
             var p = $("<p>").addClass("info-row");;
-            var name = $("<span>").html(response.dataset.name + "<br><br>");
-            var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "medianRentData");
+            var name = $("<span>").html(response.dataset.name).addClass("left");
+            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "medianRentData");
 
-            $("#rent").append(p);
+            $("#results").append(p);
             p.append(name);
             p.append(data);
 
@@ -43,10 +43,10 @@ function blah(zip) {
                 console.log(response);
 
                 var p = $("<p>").addClass("info-row");;
-                var name = $("<span>").html(response.dataset.name + "<br><br>");
-                var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "medianListData");
+                var name = $("<span>").html(response.dataset.name).addClass("left");
+                var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "medianListData");
 
-                $("#sale").append(p);
+                $("#results").append(p);
                 p.append(name);
                 p.append(data);
 
@@ -59,10 +59,10 @@ function blah(zip) {
                     console.log(response);
 
                     var p = $("<p>").addClass("info-row");;
-                    var name = $("<span>").html(response.dataset.name + "<br><br>");
-                    var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "medianSaleData");
+                    var name = $("<span>").html(response.dataset.name).addClass("left");
+                    var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "medianSaleData");
 
-                    $("#sold").append(p);
+                    $("#results").append(p);
                     p.append(name);
                     p.append(data);
 
@@ -75,10 +75,10 @@ function blah(zip) {
                         console.log(response);
 
                         var p = $("<p>").addClass("info-row");;
-                        var name = $("<span>").html(response.dataset.name + "<br><br>");
-                        var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "bdrm1Data");
+                        var name = $("<span>").html(response.dataset.name).addClass("left");
+                        var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "bdrm1Data");
 
-                        $("#1br").append(p);
+                        $("#results").append(p);
                         p.append(name);
                         p.append(data);
 
@@ -91,10 +91,10 @@ function blah(zip) {
                             console.log(response);
 
                             var p = $("<p>").addClass("info-row");;
-                            var name = $("<span>").html(response.dataset.name + "<br><br>");
-                            var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "bdrm2Data");
+                            var name = $("<span>").html(response.dataset.name).addClass("left");
+                            var data = $("<span>").html("$" + response.dataset.data[0][1]).addClass("right").attr("id", "bdrm2Data");
 
-                            $("#2br").append(p);
+                            $("#results").append(p);
                             p.append(name);
                             p.append(data);
 
@@ -107,10 +107,10 @@ function blah(zip) {
                                 console.log(response);
 
                                 var p = $("<p>").addClass("info-row");;
-                                var name = $("<span>").html(response.dataset.name + "<br><br>");
-                                var data = $("<span>").html(response.dataset.data[0][1] + "%").attr("id", "foreclosureData");
+                                var name = $("<span>").html(response.dataset.name).addClass("left");
+                                var data = $("<span>").html(response.dataset.data[0][1] + "%").addClass("right").attr("id", "foreclosureData");
 
-                                $("#foreclose").append(p);
+                                $("#results").append(p);
                                 p.append(name);
                                 p.append(data);
 
@@ -123,10 +123,10 @@ function blah(zip) {
                                 }).done(function(response) {
                                     var tax = response.totalRate;
                                     var p = $("<p>").addClass("info-row");;
-                                    var name = $("<span>").html("Sales Tax" + "<br><br><br>");
-                                    var data = $("<span>").html(tax + "%").attr("id", "salesTaxData");
+                                    var name = $("<span>").html("Sales Tax").addClass("left");
+                                    var data = $("<span>").html(tax + "%").addClass("right").attr("id", "salesTaxData");
 
-                                    $("#tax").append(p);
+                                    $("#results").append(p);
                                     p.append(name);
                                     p.append(data);
 
@@ -252,37 +252,37 @@ function geocodeAddress(geocoder, resultsMap) {
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?
         'Error: The Geolocation service failed.' :
         'Error: Your browser doesn\'t support geolocation.');
 }
 
-$(document).ready(function() {
-
-    if (localStorage.getItem("squilloName") === null || localStorage.getItem("locationClicked") === false) {
-        $('.modal').modal();
-        $('#modal1').modal('open');
-        console.log("NO NAME");
-    } else {
-        $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
-    }
-
-    var locationClicked = false;
-    $(".button-collapse").sideNav();
-
-    $("#enterButton").on("click", function() {
-        var username = $("#name").val();
-        console.log(username);
-        if (username !== "" && username !== null) {
-            localStorage.setItem("squilloName", username);
-            $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
-            saveUser();
-
-            // localStorage.setItem("locationClicked", locationClicked);
-        }
-
-    })
-
-});
+// broken out into the comb.js script
+//====================================================================================================================
+// $(document).ready(function() {
+//
+//     if (localStorage.getItem("squilloName") === null || localStorage.getItem("locationClicked") === false) {
+//         $('.modal').modal();
+//         $('#modal1').modal('open');
+//         console.log("NO NAME");
+//     } else {
+//         $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
+//     }
+//
+//     var locationClicked = false;
+//     $(".button-collapse").sideNav();
+//
+//     $("#enterButton").on("click", function() {
+//         var username = $("#name").val();
+//         console.log(username);
+//         if (username !== "" && username !== null) {
+//             localStorage.setItem("squilloName", username);
+//             $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
+//
+//             localStorage.setItem("locationClicked", locationClicked);
+//         }
+//
+//     })
+//
+// });
