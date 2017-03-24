@@ -1,6 +1,6 @@
 function blah(zip) {
 
-    $("#results").empty();
+    $(".results").empty();
     var singleFamily = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
     $.ajax({

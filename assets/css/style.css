@@ -15,7 +15,7 @@ main {
 
 #hi {
 	padding: 0 15px;
-	letter-spacing: 1px;
+	letter-spacing: 1px;	
 }
 
 #map {
@@ -36,6 +36,12 @@ main {
 
 .info-row {
 	overflow: auto;
+}
+
+.heart {
+	margin-top:10px;
+	height:30px;
+	width:auto;
 }
 
 .infobox {
