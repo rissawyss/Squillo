@@ -111,8 +111,8 @@ $("#save-btn").on("click", function(event) {
 	saved.push(newFav);
 	// console.log(saved);
 
-	userinfo.child(name).push({newFav});
-
+	//userinfo.child(name).push({newFav});
+	userinfo.child(name).update({saved});
 	
 	// localStorage.setItem("saved", saved);
 
