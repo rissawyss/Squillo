@@ -11,6 +11,16 @@
 
   var database = firebase.database();
 
+  var name = "";
+  var singleFam = "";
+  var medianRent = "";
+  var medianList = "";
+  var medianSale = "";
+  var bdrm1 = "";
+  var bdrm2 = "";
+  var foreclosures = "";
+  var tax = "";
+
   //var squilloName = ""; local storage established on logic.js
   // var zips = ""; //need appropriate variable for each saved zip
   var favs = [];
@@ -30,6 +40,16 @@ function saveUser(username) {
 //************* this saveFavZip funtion needs to be called when user clicks to add favorite. Need variable to capture zip.*********
 function saveToFavs(zip) {
 	
+  name = $("#hi").html();
+  singleFam = $("#singleFam").html();
+  medianRent = $("#medianRent").html();
+  medianList = $("#medianList").html();
+  medianSale = $("#medianSale").html();
+  bdrm1 = $("#bdrm1").html();
+  bdrm2 = $("#bdrm2").html();
+  foreclosures = $("#foreclosures").html();
+  tax = $("#tax").html();;
+
 	favs.push(zip);
 	console.log(favs);
 

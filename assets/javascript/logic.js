@@ -1,12 +1,13 @@
-
-function blah(zip) {
+function getZipInfo(zip) {
 
 
     $("#results").empty();
-    var singleFamily = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+    $("#zip-display").html(zip);
+
+    var singleFamilyURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
     $.ajax({
-        url: singleFamily,
+        url: singleFamilyURL,
         method: "GET"
     }).done(function(response) {
         console.log(response);
@@ -19,10 +20,10 @@ function blah(zip) {
         p.append(name);
         p.append(data);
 
-        var medianRent = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_RMP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+        var medianRentURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_RMP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
         $.ajax({
-            url: medianRent,
+            url: medianRentURL,
             method: "GET"
         }).done(function(response) {
             console.log(response);
@@ -35,10 +36,10 @@ function blah(zip) {
             p.append(name);
             p.append(data);
 
-            var medianList = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_MLP?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+            var medianListURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_MLP?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
             $.ajax({
-                url: medianList,
+                url: medianListURL,
                 method: "GET"
             }).done(function(response) {
                 console.log(response);
@@ -51,10 +52,10 @@ function blah(zip) {
                 p.append(name);
                 p.append(data);
 
-                var medianSale = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_MSP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+                var medianSaleURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_MSP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
                 $.ajax({
-                    url: medianSale,
+                    url: medianSaleURL,
                     method: "GET"
                 }).done(function(response) {
                     console.log(response);
@@ -67,10 +68,10 @@ function blah(zip) {
                     p.append(name);
                     p.append(data);
 
-                    var bdrm1 = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_1B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+                    var bdrm1URL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_1B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
                     $.ajax({
-                        url: bdrm1,
+                        url: bdrm1URL,
                         method: "GET"
                     }).done(function(response) {
                         console.log(response);
@@ -83,10 +84,10 @@ function blah(zip) {
                         p.append(name);
                         p.append(data);
 
-                        var bdrm2 = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_2B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+                        var bdrm2URL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_2B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
                         $.ajax({
-                            url: bdrm2,
+                            url: bdrm2URL,
                             method: "GET"
                         }).done(function(response) {
                             console.log(response);
@@ -99,10 +100,10 @@ function blah(zip) {
                             p.append(name);
                             p.append(data);
 
-                            var foreclosure = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_FR.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+                            var foreclosureURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_FR.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
                             $.ajax({
-                                url: foreclosure,
+                                url: foreclosureURL,
                                 method: "GET"
                             }).done(function(response) {
                                 console.log(response);
@@ -115,6 +116,23 @@ function blah(zip) {
                                 p.append(name);
                                 p.append(data);
 
+                                var taxURL = "https://taxrates.api.avalara.com:443/postal?country=usa&postal=" + zip + "&apikey=OOkTEd0jbFpfXlBklm0byMJ6hZ1%2BRGMxHIHCwpCz8p1fdRC5ULNz5uF6Ks4HTqsmZmZA337Kv7mK4hdKI5Poag%3D%3D";
+
+                                $.ajax({
+                                    url: taxURL,
+                                    method: "GET"
+                                }).done(function(response) {
+                                    console.log(response);
+
+                                    var p = $("<p>").addClass("info-row");;
+                                    var name = $("<span>").html("Sales Tax for " + response.rates[0].name + " , " + response.rates[1].name).addClass("left");
+                                    var data = $("<span>").html(response.totalRate + "%").addClass("right");
+
+                                    $("#results").append(p);
+                                    p.append(name);
+                                    p.append(data);
+
+                                });
                             });
                         });
                     });
@@ -122,37 +140,11 @@ function blah(zip) {
             });
         });
     });
-    
+
 };
 
-// var zip = "90020";
-// console.log(zip);
-
-// var queryURL = "https://taxrates.api.avalara.com:443/postal?country=usa&postal=" + zip + "&apikey=OOkTEd0jbFpfXlBklm0byMJ6hZ1%2BRGMxHIHCwpCz8p1fdRC5ULNz5uF6Ks4HTqsmZmZA337Kv7mK4hdKI5Poag%3D%3D";
-
-// console.log(queryURL);
-
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// }).done(function(response) {
-//     var tax = response.totalRate;
-//     console.log(tax);
-//     var taxArea = response.rates[0];
-//     var taxState = response.rates[1];
-//     console.log(taxArea.name);
-//     console.log(taxState.name);
-
-
-//     var p = $("<p>").text("Sales Tax for " + taxArea.name + " , " + taxState.name + " : " + tax + "%");
-
-//     $("#salesTaxData").append(p);
-
-// });
-
-
-
 function initMap() {
+    console.log("heLLO");
 
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {
@@ -166,7 +158,6 @@ function initMap() {
 
     $("#currentLocationBtn").on("click", function(event) {
         event.preventDefault();
-        console.log("heLLO");
 
         var infoWindow = new google.maps.InfoWindow({
             map: map,
@@ -196,7 +187,7 @@ function initMap() {
                     console.log(response);
                     console.log(response.results[0].address_components[7].short_name);
                     var currZip = response.results[0].address_components[7].short_name;
-                    blah(currZip);
+                    getZipInfo(currZip);
                     $("#save-btn").on("click", saveToFavs(currZip));
                     infoWindow.setContent("Current Zip: " + currZip);
                 })
@@ -221,7 +212,7 @@ function initMap() {
         event.preventDefault();
 
         var zip = $("#zipcode").val();
-        blah(zip);
+        getZipInfo(zip);
         $("#save-btn").on("click", saveToFavs(zip));
 
 
@@ -295,4 +286,19 @@ $(document).ready(function() {
 
 });
 
+$("#go-home").on("click", function(){
+    $(".introSection").css("display", "block");
+    $(".querySection").css("display", "block");
+    $(".infoSection").css("display", "block");
+    $(".cardSection").css("display", "none");
+    
 
+});
+$("#go-favs").on("click", function(){
+    $(".introSection").css("display", "none");
+    $(".querySection").css("display", "none");
+    $(".infoSection").css("display", "none");
+    $(".cardSection").css("display", "block");
+    
+
+});
