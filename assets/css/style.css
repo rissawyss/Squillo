@@ -1,18 +1,3 @@
-/*Color Schemes
-
-	Kayak #36362B, #5D917D, #A8AD80, #E5D3A8, #825534
-	Zen and Tea #10222B, #95AB63, #BDD684, #E2F0D6, #F6FFE0
-	Mountains of Burma #354242, #ACEBAE, #FFFF9D, #C9DE55, #7D9100
-	Classic vs Vlassic #7DA88C, #EBE9A0, #BED24B, #859132, #35323C
-	Landscape Architect #F0E6B1, #B5D6AA, #99A37A, #70584B, #3D3536
-
-	Classic 
-	Font: #35323C;
-	Logo: #859132;
-	Nav and Footer: #7DA88C;
-	Buttons: #BED24B;
-	Light Text: #EBE9A0;
-*/
 
 body {
     display: flex;
@@ -30,8 +15,25 @@ main {
 
 #hi {
 	padding: 0 15px;
-	letter-spacing: 1px;
+	letter-spacing: 1px;	
 }
+
+#img-container {
+	position:relative;
+}
+
+#headline1 {
+	position:absolute;
+	top:30%;
+	width:100%;	
+}
+
+#headline2 {
+	position:absolute;
+	top:45%;
+	width:100%;
+}
+
 
 #map {
     height: 450px;
@@ -46,6 +48,7 @@ main {
 
 .query {
 	margin-top:40px;
+	margin-bottom:40px;
 }
 
 
@@ -53,12 +56,25 @@ main {
 	overflow: auto;
 }
 
-.infobox {
-	padding-bottom:30px;
+#fave-heart{
+	margin-top:20px;
+}
+
+.heart {
+	height:50%;
+	top:12px;	
+}
+
+.info-box {
+	padding-bottom:20px;
 }
 
 #zip-display {
 	margin-bottom:40px;
+}
+
+.data-cards {
+	margin-top:20px;
 }
 
 .resultSection {
@@ -66,8 +82,7 @@ main {
 }
 
 .realEstateIcons {
-	height:50px;
-	width:50px;
+	height:50px;	
 }
 
 .cardSection {

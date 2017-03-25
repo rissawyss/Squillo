@@ -16,22 +16,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
     <header>
-        <nav class="blue-grey darken-4" role="navigation">
+        <nav class="blue-grey darken-4 navbar" role="navigation" id="home">
             <div class="nav-wrapper container header">
-                <a class="brand-logo"><img src="assets/images/squillo_logo_no_text_60px.png" class="logo"</a>
+                <a class="brand-logo"><img src="assets/images/squillo_logo_no_text_60px.png" class="logo"></a>
                 <!-- Menu Links that hide on Medium and smaller devices -->
                 <ul class="right hide-on-med-and-down">
                     <li><a id="hi"></a></li>
-                    <li id="go-home"><a>Home</a></li>
+                    <li><a id="go-home">Home</a></li>
                     <li><a id="go-favs">Favs</a></li>
                 </ul>
                 <!-- Side Navigation for Mobile -->
                 <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
                     <li>
                         <a href="#">Home</a>
-                        <a href="#">Faves</a>
+                        <a href="#faves">Faves</a>
                     </li>
                 </ul>
                 <!-- Hamburger Menu Icon -->
@@ -43,15 +43,20 @@
         <!-- Search -->
         <section class="introSection">
             
-                <div class="col s12 center">
-                    <img src="assets/images/neighborhood_max.jpg" class="responsive-img">
+                <div class="col s12 center" id="img-container">
+                    <img src="assets/images/neighborhood_max72.png" class="responsive-img">                                      
                 </div>
-            
+                                
+                <!-- <div class="portfolio_imgs" id="img_container_1">
+                    <img src="assets/images/bodyboarding.jpg" id="project_1">
+                    <div id="banner_1"><h2>Wave Finder<h2></div>
+                </div> -->
+
         </section>
         <!-- Info -->
         <section class="querySection">
             <div class="row">
-                    <div class="col s6 center query">
+                    <div class="col s12 l6 center query">
                     <h3 class="">Which zip code are you curious about?</h3>                
                     <form class="input-field inline">
                         <input id="zipcode-input" type="text" class="validate">
@@ -60,95 +65,29 @@
                         <button class="btn waves-effect waves-light teal" type="submit" name="action" id="currentLocationBtn">Use Current Location</button>
                     </form>
                 </div>
-                <div id="map" class="col s6"></div>
+                <div id="map" class="col s12 l6"></div>
             </div>
         </section>
+        
         <!-- Info -->
-        <section class="infoSection">
+        <section class="infoSection" id="infosection">
 
             <div class="row infobox">
+
                 <div id="results" class="col m12 blue-grey darken-3">
 
-                    <!-- <button>Save Me!</button>
-                    <h3 id="zip-display" class="white-text center"></h3> -->
+                    <!-- <a class="btn-floating btn-large waves-effect waves-light red" id="fave-heart"><img src="assets/images/heart-white-outline-no-fill.png" class="heart"></a>  -->                   
+                    <h3 id="zip-display" class="white-text center"></h3>   
                     
-
-
-                    
-                    <!-- <div class="col s12 m3">
-                        <div class="white-text center">
-                            <img src="assets/images/rent.png" class="realEstateIcons">
-                            <div id="rent">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m3">
-                        <div class="white-text center">
-                            <img src="assets/images/sale.png" class="realEstateIcons">
-                            <div class="card-content" id="sale">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m3">
-                        <div class="white-text center">
-                            <img src="assets/images/sold.png" class="realEstateIcons">
-                            <div class="card-content" id="sold">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m3">
-                        <div class="white-text center">
-                            <img src="assets/images/1br.png" class="realEstateIcons">
-                            <div class="card-content" id="1br">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m3">
-                        <div class="white-text center">
-                            <img src="assets/images/2br.png" class="realEstateIcons">
-                            <div class="card-content" id="2br">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m3">
-                        <div class="white-text center">
-                            <img src="assets/images/foreclose.png" class="realEstateIcons">
-                            <div class="card-content" id="foreclose">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m3">
-                        <div class="white-text center">
-                            <img src="assets/images/tax.png" class="realEstateIcons">
-                            <div class="card-content" id="tax">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
-                            </div>                            
-                        </div>
-                    </div>    
- -->
                 </div>
 
-            </div>           
-
-
+            </div> 
         </section>
+
         <!-- Cards -->
-        <section class="cardSection">
+        <section class="cardSection" id="faves">
             <div class="row">
-                <div class="col s12 m2">
+                <div class="col s12 m4 l3">
                     <div class="card blue-grey">
                         <div class="card-content white-text">
                             <span class="card-title">Card Title</span>
@@ -160,7 +99,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m2">
+                <div class="col s12 m4 l3">
                     <div class="card blue-grey">
                         <div class="card-content white-text">
                             <span class="card-title">Card Title</span>
@@ -194,17 +133,20 @@
     <footer class="page-footer blue-grey darken-4">
         <div class="container">
             <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">Rows or Columns</p>
+                <div class="col s12 l4">                    
+                    <ul>                        
+                        <li><a class="grey-text text-lighten-3" href="http://www.fanniemae.com" target="blank">Fannie Mae</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://www.freddiemac.com/" target="blank">Freddie Mac</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.hudhomestore.com" target="blank">HUD Homes</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.fhfa.gov/" target="blank">Federal Finance Housing Agency</a></li>
+                    </ul>
                 </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
+                <div class="col s12 l4">                    
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/home-buying/types-of-home-construction.aspx" target="blank">Types of Home Construction</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/homeownership/home-maintenance-and-repair.aspx" target="blank">Home Maintenance and Repair</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/homeownership/remodeling-your-home.aspx" target="blank">Remodel Your Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/homeownership/design-trends.aspx" target="blank">Design Trends</a></li>                        
                     </ul>
                 </div>
             </div>
@@ -212,7 +154,7 @@
         <div class="footer-copyright">
             <div class="container">
                 © 2017 3Nodes
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                <a class="grey-text text-lighten-4 right" href="#home">Back to Top</a>
             </div>
         </div>
     </footer>
@@ -226,5 +168,39 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARhPeu596nXJrWQNKL-YoIXwkV0MbhCW0&callback=initMap&language=en&region=US&&libraries=places"></script>
     <!-- Compiled and minified JavaScript for Materialize-->
 </body>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, a[href='#home']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+      // Store hash
+      var hash = this.hash;
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
 
 </html>

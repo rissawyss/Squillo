@@ -16,7 +16,7 @@ function getZipInfo(zip) {
     }).done(function(response) {
         console.log(response);
 
-        var sfWrapper = $("<div>").addClass("wrapper col s12 m3 white-text center").attr("id", "sf-wrapper");
+        var sfWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "sf-wrapper");
         var sfImg = $("<img>").attr("src", "assets/images/singlefam.png").attr("id", "sf-img");
         var sfDiv = $("<div>").attr("id", "sf-div");
         var sfTitle = $("<p>").html("Single Family Residences").attr("id", "sf-title");
@@ -38,7 +38,7 @@ function getZipInfo(zip) {
         }).done(function(response) {
             console.log(response);
 
-            var mrWrapper = $("<div>").addClass("wrapper col s12 m3 white-text center").attr("id", "mr-wrapper");
+            var mrWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "mr-wrapper");
             var mrImg = $("<img>").attr("src", "assets/images/rent.png").attr("id", "mr-img");
             var mrDiv = $("<div>").attr("id", "mr-div");
             var mrTitle = $("<p>").html("Rentals Median Price").attr("id", "mr-title");
@@ -58,7 +58,7 @@ function getZipInfo(zip) {
             }).done(function(response) {
                 console.log(response);
 
-                var mlWrapper = $("<div>").addClass("wrapper col s12 m3 white-text center").attr("id", "ml-wrapper");
+                var mlWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "ml-wrapper");
                 var mlImg = $("<img>").attr("src", "assets/images/sale.png").attr("id", "ml-img");
                 var mlDiv = $("<div>").attr("id", "ml-div");
                 var mlTitle = $("<p>").html("Median List Price").attr("id", "ml-title");
@@ -78,7 +78,7 @@ function getZipInfo(zip) {
                 }).done(function(response) {
                     console.log(response);
 
-                    var msWrapper = $("<div>").addClass("wrapper col s12 m3 white-text center").attr("id", "ms-wrapper");
+                    var msWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "ms-wrapper");
                     var msImg = $("<img>").attr("src", "assets/images/sold.png").attr("id", "ms-img");
                     var msDiv = $("<div>").attr("id", "ms-div");
                     var msTitle = $("<p>").html("Median Sale Price").attr("id", "ms-title");
@@ -98,7 +98,7 @@ function getZipInfo(zip) {
                     }).done(function(response) {
                         console.log(response);
 
-                        var bdrm1Wrapper = $("<div>").addClass("wrapper col s12 m3 white-text center").attr("id", "bdrm1-wrapper");
+                        var bdrm1Wrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "bdrm1-wrapper");
                         var bdrm1Img = $("<img>").attr("src", "assets/images/1br.png").attr("id", "bdrm1-img");
                         var bdrm1Div = $("<div>").attr("id", "bdrm1-div");
                         var bdrm1Title = $("<p>").html("One Bedroom Homes").attr("id", "bdrm1-title");
@@ -118,7 +118,7 @@ function getZipInfo(zip) {
                         }).done(function(response) {
                             console.log(response);
 
-                            var bdrm2Wrapper = $("<div>").addClass("wrapper col s12 m3 white-text center").attr("id", "bdrm2-wrapper");
+                            var bdrm2Wrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "bdrm2-wrapper");
                             var bdrm2Img = $("<img>").attr("src", "assets/images/2br.png").attr("id", "bdrm2-img");
                             var bdrm2Div = $("<div>").attr("id", "bdrm2-div");
                             var bdrm2Title = $("<p>").html("Two Bedroom Homes").attr("id", "bdrm2-title");
@@ -138,7 +138,7 @@ function getZipInfo(zip) {
                             }).done(function(response) {
                                 console.log(response);
 
-                                var fcWrapper = $("<div>").addClass("wrapper col s12 m3 white-text center").attr("id", "fc-wrapper");
+                                var fcWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "fc-wrapper");
                                 var fcImg = $("<img>").attr("src", "assets/images/foreclose.png").attr("id", "fc-img");
                                 var fcDiv = $("<div>").attr("id", "fc-div");
                                 var fcTitle = $("<p>").html("Foreclosure Resales (%)").attr("id", "fc-title");
@@ -150,16 +150,16 @@ function getZipInfo(zip) {
                                 fcDiv.append(fcTitle);
                                 fcDiv.append(fcData);
 
-
                                 var taxURL = "https://taxrates.api.avalara.com:443/postal?country=usa&postal=" + zip + "&apikey=OOkTEd0jbFpfXlBklm0byMJ6hZ1%2BRGMxHIHCwpCz8p1fdRC5ULNz5uF6Ks4HTqsmZmZA337Kv7mK4hdKI5Poag%3D%3D";
 
                                 $.ajax({
                                     url: taxURL,
                                     method: "GET"
                                 }).done(function(response) {
+
                                     console.log(response);
                                     
-                                    var taxWrapper = $("<div>").addClass("wrapper col s12 m3 white-text center").attr("id", "tax-wrapper");
+                                    var taxWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "tax-wrapper");
                                     var taxImg = $("<img>").attr("src", "assets/images/tax.png").attr("id", "tax-img");
                                     var taxDiv = $("<div>").attr("id", "tax-div");
                                     var taxTitle = $("<p>").html("State Sales Tax").attr("id", "tax-title");
