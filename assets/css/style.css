@@ -43,7 +43,7 @@ main {
 .querySection {
 	display: block;
     height: 450px; 
-    background-color:;   
+    /*background-color:;   */
 }
 
 .query {
@@ -86,7 +86,7 @@ main {
 }
 
 .cardSection {
-	/*display: none;*/
+	display: none;
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -101,5 +101,9 @@ nav {
 	display:block;
 	margin-top:10px;
 
+}
+
+.wrapper img {
+	max-height: 107px;
 }
 
