@@ -51,13 +51,8 @@ main {
 	margin-bottom:40px;
 }
 
-
-.info-row {
-	overflow: auto;
-}
-
-#fave-heart{
-	margin-top:20px;
+#save-btn{
+	
 }
 
 .heart {
@@ -65,12 +60,18 @@ main {
 	top:12px;	
 }
 
-.info-box {
-	padding-bottom:20px;
+.infobox {
+	margin-bottom: 0px;
 }
 
 #zip-display {
-	margin-bottom:40px;
+	display: inline-block;
+	margin: 1.25em 0.8em 1em 0.8em;
+	vertical-align: middle;
+}
+
+#title-div {
+	text-align: center;
 }
 
 .data-cards {
@@ -101,6 +102,10 @@ nav {
 	display:block;
 	margin-top:10px;
 
+}
+
+.wrapper {
+	margin-top: 3em;
 }
 
 .wrapper img {
