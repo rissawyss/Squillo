@@ -11,9 +11,8 @@
 
   var database = firebase.database();
 
-  //var squilloName = ""; local storage established on logic.js
   var name = "";
-  var zip = ""; //need appropriate variable for each saved zip
+  var zip = "";
   var singleFamilyData = "";
   var medianRentData = "";
   var medianListData = "";
@@ -27,35 +26,20 @@
   var favorites;
 
 
-
-
-//************* this saveUser function needs to be called on the logic.js file when user entered*********
-  function saveUser() {
+function saveUser() {
 	event.preventDefault();
 
 	name = $("#name").val();
 
-//=====================================================
-	userinfo = database.ref("'" + name + "'");
 
-
-	// userinfo.push({
-	// 	favorites: favs
-	// })
-//=====================================================
-		database.ref().push({
-	    "name": name,
-	    "saved": saved
-	    //saved: userinfo.push({saved: saved}) 
-	  });
-
-// 		userinfo.child(name).set({
-//   		saved: saved
-// });
+	database.ref().push({
+    "name": name,
+    "saved": saved
+  });
 
 }
 
-//************* this saveFavZip funtion needs to be called when user clicks to add favorite. Need variable to capture zip.*********
+
 $("#save-btn").on("click", function(event) {
 	event.preventDefault();
 
@@ -71,7 +55,7 @@ $("#save-btn").on("click", function(event) {
 	salesTaxData = $("#salesTaxData").text();
 
 	var newFav = {
-  		zip: zip,
+		zip: zip,
 		singleFamilyData: singleFamilyData,
 		medianRentData: medianRentData,
 		medianListData: medianListData,
@@ -83,32 +67,20 @@ $("#save-btn").on("click", function(event) {
 	};
 
 	saved.push(newFav);
-
-	console.log("name" + name);
-	console.log("zip: " + zip);
-	console.log("SingleFamilyData: " + singleFamilyData);
-	console.log("MedianRentData: " + medianRentData);
-	console.log("MedianListData: " + medianListData);
-	console.log("MedianSaleData: " + medianSaleData);
-	console.log("BDRM1Data: " + bdrm1Data);
-	console.log("BDRM2Data: " + bdrm2Data);
-	console.log("ForeclosureData: " + foreclosureData);
-	console.log("salesTaxData: " + salesTaxData);
 	
 	var userKey = "";
 
-		database.ref().once("value", function(snapshot){
-			snapshot.forEach(function(childSnapshot){
-				var childData = childSnapshot.val();
-				for (var prop in childData){
-					if (childData[prop] === name) {
-						console.log("found it");
-						console.log(childSnapshot.key);
-						userKey = childSnapshot.key;
-						console.log(userKey);
+	database.ref().once("value", function(snapshot){
+		snapshot.forEach(function(childSnapshot){
+			var childData = childSnapshot.val();
+			for (var prop in childData){
+				if (childData[prop] === name) {
+					console.log("found it");
+					
+					userKey = childSnapshot.key;
 
-							database.ref().update({
-						    saved: saved
+					database.ref(userKey).update({
+				    saved: saved
 					});
 				}
 			}
