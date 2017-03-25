@@ -20,7 +20,6 @@ var bdrm1Data = "";
 var bdrm2Data = "";
 var foreclosureData = "";
 var salesTaxData = "";
-var favs = [];
 
 function saveUser(username) {
 
@@ -58,9 +57,7 @@ function saveToFavs(event) {
         foreclosureData: foreclosureData,
         salesTaxData: salesTaxData
     };
-
-    favs.push(newFav);
-
+    
     database.ref().once("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
             var childData = childSnapshot.val();
@@ -70,8 +67,8 @@ function saveToFavs(event) {
                     theKey = childSnapshot.key;
 
                     var updateFavs = database.ref().child(theKey);
-                    updateFavs.update({
-                        "favorites": favs
+                    updateFavs.push({
+                        "favorites": newFav
                     });
 
                 }
@@ -80,5 +77,21 @@ function saveToFavs(event) {
     });
 
     console.log("++++++++++++++");
-    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
