@@ -303,6 +303,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         'Error: Your browser doesn\'t support geolocation.');
 }
 
+
+
 $(document).ready(function() {
 
     if (localStorage.getItem("squilloName") === null || localStorage.getItem("locationClicked") === false) {
@@ -314,6 +316,7 @@ $(document).ready(function() {
     }
 
     var locationClicked = false;
+
     $(".button-collapse").sideNav();
 
     $("#enterButton").on("click", function() {
@@ -326,8 +329,6 @@ $(document).ready(function() {
             localStorage.setItem("squilloName", username);
             $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
             saveUser(username);
-
-            // localStorage.setItem("locationClicked", locationClicked);
         }
 
     });
@@ -350,6 +351,7 @@ $(document).ready(function() {
                 window.location.hash = hash;
             });
         } // End if
+
     });
 
     $(window).scroll(function() {
