@@ -49,7 +49,7 @@ function getZipInfo(zip) {
             var mrWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "mr-wrapper");
             var mrImg = $("<img>").attr("src", "assets/images/rent.png").attr("id", "mr-img");
             var mrDiv = $("<div>").attr("id", "mr-div");
-            var mrTitle = $("<p>").html("Rentals Median Price").attr("id", "mr-title");
+            var mrTitle = $("<p>").html("Median Rental Price").attr("id", "mr-title");
             var mrData = $("<p>").html("$" + response.dataset.data[0][1]).attr("id", "mr-data");
 
             $("#results").append(mrWrapper);
@@ -368,7 +368,7 @@ $(document).ready(function() {
 
 $(document).on("click", "#save-btn", saveToFavs);
 
-$("#go-home").on("click", function() {
+$(".go-home").on("click", function() {
 
     $(".introSection").css("display", "block");
     $(".querySection").css("display", "block");
@@ -378,8 +378,8 @@ $("#go-home").on("click", function() {
 
 });
 
-$("#go-favs").on("click", function() {
-
+$(".go-favs").on("click", function() {
+    renderCards();
     $(".introSection").css("display", "none");
     $(".querySection").css("display", "none");
     $(".infoSection").css("display", "none");
