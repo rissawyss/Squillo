@@ -2,11 +2,19 @@ function getZipInfo(zip) {
 
     $("#results").empty();
 
-    var saveToFavsBtn = $("<button>").html("Save This!").attr("id", "save-btn");
-    var zipTitle = $("<h3>").addClass("white-text center").attr("id", "zip-display").html(zip);
+    var titleDiv = $("<div>").attr("id", "title-div");
 
-    $("#results").append(saveToFavsBtn);
-    $("#results").append(zipTitle);
+
+    var saveToFavsBtn = $("<a>").attr("id", "save-btn").addClass("btn-floating btn-large waves-effect waves-light red");
+    var btnContent = $("<img>").addClass("heart").attr("src", "assets/images/heart-white-outline-no-fill.png");
+    var zipTitle = $("<h3>").addClass("white-text center").attr("id", "zip-display").html("Results for " + zip);
+
+
+    $("#results").append(titleDiv);
+    titleDiv.append(zipTitle);
+    titleDiv.append(saveToFavsBtn);
+    saveToFavsBtn.append(btnContent);
+
 
     var sfURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
@@ -158,7 +166,7 @@ function getZipInfo(zip) {
                                 }).done(function(response) {
 
                                     console.log(response);
-                                    
+
                                     var taxWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "tax-wrapper");
                                     var taxImg = $("<img>").attr("src", "assets/images/tax.png").attr("id", "tax-img");
                                     var taxDiv = $("<div>").attr("id", "tax-div");
@@ -322,7 +330,37 @@ $(document).ready(function() {
             // localStorage.setItem("locationClicked", locationClicked);
         }
 
-    })
+    });
+
+    // Add smooth scrolling to all links in navbar + footer link
+    $(".navbar a, a[href='#home']").on('click', function(event) {
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+            // Store hash
+            var hash = this.hash;
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 900, function() {
+
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+            });
+        } // End if
+    });
+
+    $(window).scroll(function() {
+        $(".slideanim").each(function() {
+            var pos = $(this).offset().top;
+            var winTop = $(window).scrollTop();
+            if (pos < winTop + 600) {
+                $(this).addClass("slide");
+            }
+        });
+    });
 
 });
 
@@ -333,6 +371,7 @@ $("#go-home").on("click", function() {
     $(".introSection").css("display", "block");
     $(".querySection").css("display", "block");
     $(".infoSection").css("display", "block");
+    $("#results").empty();
     $(".cardSection").css("display", "none");
 
 });
