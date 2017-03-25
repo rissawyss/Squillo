@@ -33,10 +33,6 @@ function saveUser(username) {
 
 }
 
-// $(document).on("click", "#save-btn", function(){
-
-// });
-
 function saveToFavs(event) {
     event.preventDefault();
     console.log("++++++++++++++");
@@ -85,28 +81,6 @@ function saveToFavs(event) {
         });
     });
 
-    console.log(theKey);
-
-
-
-    console.log(theKey);
-    console.log("zip: " + zip);
-    console.log("SingleFamilyData: " + singleFamilyData);
-    console.log("MedianRentData: " + medianRentData);
-    console.log("MedianListData: " + medianListData);
-    console.log("MedianSaleData: " + medianSaleData);
-    console.log("BDRM1Data: " + bdrm1Data);
-    console.log("BDRM2Data: " + bdrm2Data);
-    console.log("ForeclosureData: " + foreclosureData);
-    console.log("salesTaxData: " + salesTaxData);
-
-
-
-
-
     console.log("++++++++++++++");
-    // username.child(fav).update({favs});
-
+    
 }
-
-//************* this saveFavZip funtion needs to be called when user clicks to add favorite. Need variable to capture zip.*********
