@@ -1,137 +1,177 @@
-function blah(zip) {
+function getZipInfo(zip) {
 
-    $(".results").empty();
-    var singleFamily = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+    $("#results").empty();
+
+    var saveToFavsBtn = $("<button>").html("Save This!").attr("id", "save-btn");
+    var zipTitle = $("<h3>").addClass("white-text center").attr("id", "zip-display").html(zip);
+
+    $("#results").append(saveToFavsBtn);
+    $("#results").append(zipTitle);
+
+    var sfURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_SF.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
     $.ajax({
-        url: singleFamily,
+        url: sfURL,
         method: "GET"
     }).done(function(response) {
         console.log(response);
 
-        var p = $("<p>").addClass("info-row");
-        var name = $("<span>").html(response.dataset.name + "<br><br>");
-        var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "singleFamilyData");
+        var sfWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "sf-wrapper");
+        var sfImg = $("<img>").attr("src", "assets/images/singlefam.png").attr("id", "sf-img");
+        var sfDiv = $("<div>").attr("id", "sf-div");
+        var sfTitle = $("<p>").html("Single Family Residences").attr("id", "sf-title");
+        var sfData = $("<p>").html("$" + response.dataset.data[0][1]).attr("id", "sf-data");
 
-        $("#singleFam").append(p);
-        p.append(name);
-        p.append(data);
-        console.log($("#singleFamilyData").text());
+        $("#results").append(sfWrapper);
+        sfWrapper.append(sfImg);
+        sfWrapper.append(sfDiv);
+        sfDiv.append(sfTitle);
+        sfDiv.append(sfData);
 
-        var medianRent = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_RMP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+        console.log($("#sfData").text());
+
+        var mrURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_RMP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
         $.ajax({
-            url: medianRent,
+            url: mrURL,
             method: "GET"
         }).done(function(response) {
             console.log(response);
 
-            var p = $("<p>").addClass("info-row");;
-            var name = $("<span>").html(response.dataset.name + "<br><br>");
-            var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "medianRentData");
+            var mrWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "mr-wrapper");
+            var mrImg = $("<img>").attr("src", "assets/images/rent.png").attr("id", "mr-img");
+            var mrDiv = $("<div>").attr("id", "mr-div");
+            var mrTitle = $("<p>").html("Rentals Median Price").attr("id", "mr-title");
+            var mrData = $("<p>").html("$" + response.dataset.data[0][1]).attr("id", "mr-data");
 
-            $("#rent").append(p);
-            p.append(name);
-            p.append(data);
+            $("#results").append(mrWrapper);
+            mrWrapper.append(mrImg);
+            mrWrapper.append(mrDiv);
+            mrDiv.append(mrTitle);
+            mrDiv.append(mrData);
 
-            var medianList = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_MLP?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+            var mlURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_MLP?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
             $.ajax({
-                url: medianList,
+                url: mlURL,
                 method: "GET"
             }).done(function(response) {
                 console.log(response);
 
-                var p = $("<p>").addClass("info-row");;
-                var name = $("<span>").html(response.dataset.name + "<br><br>");
-                var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "medianListData");
+                var mlWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "ml-wrapper");
+                var mlImg = $("<img>").attr("src", "assets/images/sale.png").attr("id", "ml-img");
+                var mlDiv = $("<div>").attr("id", "ml-div");
+                var mlTitle = $("<p>").html("Median List Price").attr("id", "ml-title");
+                var mlData = $("<p>").html("$" + response.dataset.data[0][1]).attr("id", "ml-data");
 
-                $("#sale").append(p);
-                p.append(name);
-                p.append(data);
+                $("#results").append(mlWrapper);
+                mlWrapper.append(mlImg);
+                mlWrapper.append(mlDiv);
+                mlDiv.append(mlTitle);
+                mlDiv.append(mlData);
 
-                var medianSale = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_MSP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+                var msURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_MSP.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
                 $.ajax({
-                    url: medianSale,
+                    url: msURL,
                     method: "GET"
                 }).done(function(response) {
                     console.log(response);
 
-                    var p = $("<p>").addClass("info-row");;
-                    var name = $("<span>").html(response.dataset.name + "<br><br>");
-                    var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "medianSaleData");
+                    var msWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "ms-wrapper");
+                    var msImg = $("<img>").attr("src", "assets/images/sold.png").attr("id", "ms-img");
+                    var msDiv = $("<div>").attr("id", "ms-div");
+                    var msTitle = $("<p>").html("Median Sale Price").attr("id", "ms-title");
+                    var msData = $("<p>").html("$" + response.dataset.data[0][1]).attr("id", "ms-data");
 
-                    $("#sold").append(p);
-                    p.append(name);
-                    p.append(data);
+                    $("#results").append(msWrapper);
+                    msWrapper.append(msImg);
+                    msWrapper.append(msDiv);
+                    msDiv.append(msTitle);
+                    msDiv.append(msData);
 
-                    var bdrm1 = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_1B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+                    var bdrm1URL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_1B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
                     $.ajax({
-                        url: bdrm1,
+                        url: bdrm1URL,
                         method: "GET"
                     }).done(function(response) {
                         console.log(response);
 
-                        var p = $("<p>").addClass("info-row");;
-                        var name = $("<span>").html(response.dataset.name + "<br><br>");
-                        var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "bdrm1Data");
+                        var bdrm1Wrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "bdrm1-wrapper");
+                        var bdrm1Img = $("<img>").attr("src", "assets/images/1br.png").attr("id", "bdrm1-img");
+                        var bdrm1Div = $("<div>").attr("id", "bdrm1-div");
+                        var bdrm1Title = $("<p>").html("One Bedroom Homes").attr("id", "bdrm1-title");
+                        var bdrm1Data = $("<p>").html("$" + response.dataset.data[0][1]).attr("id", "bdrm1-data");
 
-                        $("#1br").append(p);
-                        p.append(name);
-                        p.append(data);
+                        $("#results").append(bdrm1Wrapper);
+                        bdrm1Wrapper.append(bdrm1Img);
+                        bdrm1Wrapper.append(bdrm1Div);
+                        bdrm1Div.append(bdrm1Title);
+                        bdrm1Div.append(bdrm1Data);
 
-                        var bdrm2 = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_2B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+                        var bdrm2URL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_2B.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
                         $.ajax({
-                            url: bdrm2,
+                            url: bdrm2URL,
                             method: "GET"
                         }).done(function(response) {
                             console.log(response);
 
-                            var p = $("<p>").addClass("info-row");;
-                            var name = $("<span>").html(response.dataset.name + "<br><br>");
-                            var data = $("<span>").html("$" + response.dataset.data[0][1]).attr("id", "bdrm2Data");
+                            var bdrm2Wrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "bdrm2-wrapper");
+                            var bdrm2Img = $("<img>").attr("src", "assets/images/2br.png").attr("id", "bdrm2-img");
+                            var bdrm2Div = $("<div>").attr("id", "bdrm2-div");
+                            var bdrm2Title = $("<p>").html("Two Bedroom Homes").attr("id", "bdrm2-title");
+                            var bdrm2Data = $("<p>").html("$" + response.dataset.data[0][1]).attr("id", "bdrm2-data");
 
-                            $("#2br").append(p);
-                            p.append(name);
-                            p.append(data);
+                            $("#results").append(bdrm2Wrapper);
+                            bdrm2Wrapper.append(bdrm2Img);
+                            bdrm2Wrapper.append(bdrm2Div);
+                            bdrm2Div.append(bdrm2Title);
+                            bdrm2Div.append(bdrm2Data);
 
-                            var foreclosure = "https://www.quandl.com/api/v3/datasets/ZILL/Z"+zip+"_FR.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
+                            var fcURL = "https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_FR.json?rows=1&api_key=wNNgsSVpMcxry936Vu8V";
 
                             $.ajax({
-                                url: foreclosure,
+                                url: fcURL,
                                 method: "GET"
                             }).done(function(response) {
                                 console.log(response);
 
-                                var p = $("<p>").addClass("info-row");;
-                                var name = $("<span>").html(response.dataset.name + "<br><br>");
-                                var data = $("<span>").html(response.dataset.data[0][1] + "%").attr("id", "foreclosureData");
+                                var fcWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "fc-wrapper");
+                                var fcImg = $("<img>").attr("src", "assets/images/foreclose.png").attr("id", "fc-img");
+                                var fcDiv = $("<div>").attr("id", "fc-div");
+                                var fcTitle = $("<p>").html("Foreclosure Resales (%)").attr("id", "fc-title");
+                                var fcData = $("<p>").html(response.dataset.data[0][1] + "%").attr("id", "fc-data");
 
-                                $("#foreclose").append(p);
-                                p.append(name);
-                                p.append(data);
+                                $("#results").append(fcWrapper);
+                                fcWrapper.append(fcImg);
+                                fcWrapper.append(fcDiv);
+                                fcDiv.append(fcTitle);
+                                fcDiv.append(fcData);
 
-
-                                var salesTax = "https://taxrates.api.avalara.com:443/postal?country=usa&postal=" + zip + "&apikey=OOkTEd0jbFpfXlBklm0byMJ6hZ1%2BRGMxHIHCwpCz8p1fdRC5ULNz5uF6Ks4HTqsmZmZA337Kv7mK4hdKI5Poag%3D%3D";
+                                var taxURL = "https://taxrates.api.avalara.com:443/postal?country=usa&postal=" + zip + "&apikey=OOkTEd0jbFpfXlBklm0byMJ6hZ1%2BRGMxHIHCwpCz8p1fdRC5ULNz5uF6Ks4HTqsmZmZA337Kv7mK4hdKI5Poag%3D%3D";
 
                                 $.ajax({
-                                    url: salesTax,
+                                    url: taxURL,
                                     method: "GET"
                                 }).done(function(response) {
-                                    var tax = response.totalRate;
-                                    var p = $("<p>").addClass("info-row");;
-                                    var name = $("<span>").html("Sales Tax" + "<br><br><br>");
-                                    var data = $("<span>").html(tax + "%").attr("id", "salesTaxData");
 
-                                    $("#tax").append(p);
-                                    p.append(name);
-                                    p.append(data);
+                                    console.log(response);
+                                    
+                                    var taxWrapper = $("<div>").addClass("wrapper col s12 m6 l3 white-text center").attr("id", "tax-wrapper");
+                                    var taxImg = $("<img>").attr("src", "assets/images/tax.png").attr("id", "tax-img");
+                                    var taxDiv = $("<div>").attr("id", "tax-div");
+                                    var taxTitle = $("<p>").html("State Sales Tax").attr("id", "tax-title");
+                                    var taxData = $("<p>").html(response.totalRate + "%").attr("id", "tax-data");
 
-                                    });
+                                    $("#results").append(taxWrapper);
+                                    taxWrapper.append(taxImg);
+                                    taxWrapper.append(taxDiv);
+                                    taxDiv.append(taxTitle);
+                                    taxDiv.append(taxData);
 
+                                });
                             });
                         });
                     });
@@ -140,11 +180,6 @@ function blah(zip) {
         });
     });
 };
-
-
-
-
-
 
 function initMap() {
 
@@ -190,7 +225,7 @@ function initMap() {
                     console.log(response);
                     console.log(response.results[0].address_components[7].short_name);
                     var currZip = response.results[0].address_components[7].short_name;
-                    blah(currZip);
+                    getZipInfo(currZip);
                     infoWindow.setContent("Current Zip: " + currZip);
                 })
 
@@ -223,8 +258,9 @@ function initMap() {
 
 function geocodeAddress(geocoder, resultsMap) {
 
-    var zip = $("#zipcode").val();
-    blah(zip);
+    var zip = $("#zipcode-input").val();
+    console.log(zip);
+    getZipInfo(zip);
 
     geocoder.geocode({
         'address': zip
@@ -273,12 +309,15 @@ $(document).ready(function() {
     $(".button-collapse").sideNav();
 
     $("#enterButton").on("click", function() {
+
         var username = $("#name").val();
         console.log(username);
+
         if (username !== "" && username !== null) {
+
             localStorage.setItem("squilloName", username);
             $("#hi").html("Howdy, " + localStorage.getItem("squilloName") + "!");
-            saveUser();
+            saveUser(username);
 
             // localStorage.setItem("locationClicked", locationClicked);
         }
@@ -287,3 +326,22 @@ $(document).ready(function() {
 
 });
 
+$(document).on("click", "#save-btn", saveToFavs);
+
+$("#go-home").on("click", function() {
+
+    $(".introSection").css("display", "block");
+    $(".querySection").css("display", "block");
+    $(".infoSection").css("display", "block");
+    $(".cardSection").css("display", "none");
+
+});
+
+$("#go-favs").on("click", function() {
+
+    $(".introSection").css("display", "none");
+    $(".querySection").css("display", "none");
+    $(".infoSection").css("display", "none");
+    $(".cardSection").css("display", "block");
+
+});

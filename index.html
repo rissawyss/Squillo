@@ -24,8 +24,8 @@
                 <!-- Menu Links that hide on Medium and smaller devices -->
                 <ul class="right hide-on-med-and-down">
                     <li><a id="hi"></a></li>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#faves">Faves</a></li>
+                    <li><a id="go-home">Home</a></li>
+                    <li><a id="go-favs">Favs</a></li>
                 </ul>
                 <!-- Side Navigation for Mobile -->
                 <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
@@ -59,13 +59,13 @@
                     <div class="col s12 l6 center query">
                     <h3 class="">Which zip code are you curious about?</h3>                
                     <form class="input-field inline">
-                        <input id="zipcode" type="text" class="validate">
-                        <label for="zipcode" data-error="wrong" data-success="right" class="left-align">Enter Your Zip Code</label>
+                        <input id="zipcode-input" type="text" class="validate">
+                        <label for="zipcode-input" data-error="wrong" data-success="right" class="left-align">Enter Your Zip Code</label>
                         <input class="btn waves-effect waves-light teal" type="submit" name="action" id="searchBtn" value="Search">
                         <button class="btn waves-effect waves-light teal" type="submit" name="action" id="currentLocationBtn">Use Current Location</button>
                     </form>
                 </div>
-                    <div id="map" class="col s12 l6"></div>
+                <div id="map" class="col s12 l6"></div>
             </div>
         </section>
         
@@ -73,77 +73,12 @@
         <section class="infoSection" id="infosection">
 
             <div class="row infobox">
-                <div class="col m12 blue-grey darken-3">
-                    <div class="col s12">
-                    <div class="row">
-                    <a class="btn-floating btn-large waves-effect waves-light red" id="fave-heart"><img src="assets/images/heart-white-outline-no-fill.png" class="heart"></a>                    
-                    <h3 id="zip-display" class="white-text center">90020</h3>   
-                    </div>
-                    </div>
-                    <div class="col s12 m6 l3 data-cards">
-                        <div class="white-text center">
-                            <img src="assets/images/singlefam.png" class="realEstateIcons results">
-                            <div id="singleFam" class="results">                            
-                                <!-- append single family info here -->
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m6 l3 data-cards">
-                        <div class="white-text center">
-                            <img src="assets/images/rent.png" class="realEstateIcons results">
-                            <div id="rent" class="results">
-                                <!-- append median rent info here -->
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m6 l3 data-cards">
-                        <div class="white-text center">
-                            <img src="assets/images/sale.png" class="realEstateIcons results">
-                            <div id="sale" class="results">
-                                <!-- append median list info here -->
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m6 l3 data-cards">
-                        <div class="white-text center">
-                            <img src="assets/images/sold.png" class="realEstateIcons results">
-                            <div id="sold" class="results">
-                                <!-- append median sold info here -->
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m6 l3 data-cards">
-                        <div class="white-text center">
-                            <img src="assets/images/1br.png" class="realEstateIcons results">
-                            <div id="1br" class="results">
-                                <!-- append 1bedroom info here -->
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m6 l3 data-cards">
-                        <div class="white-text center">
-                            <img src="assets/images/2br.png" class="realEstateIcons results">
-                            <div id="2br" class="results">
-                                
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m6 l3 data-cards">
-                        <div class="white-text center">
-                            <img src="assets/images/foreclose.png" class="realEstateIcons results">
-                            <div id="foreclose" class="results">
-                                
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m6 l3 data-cards">
-                        <div class="white-text center">
-                            <img src="assets/images/tax.png" class="realEstateIcons results">
-                            <div id="tax" class="results">
-                                
-                            </div>                            
-                        </div>
-                    </div>    
+
+                <div id="results" class="col m12 blue-grey darken-3">
+
+                    <!-- <a class="btn-floating btn-large waves-effect waves-light red" id="fave-heart"><img src="assets/images/heart-white-outline-no-fill.png" class="heart"></a>  -->                   
+                    <h3 id="zip-display" class="white-text center"></h3>   
+                    
                 </div>
 
             </div> 
@@ -226,11 +161,11 @@
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARhPeu596nXJrWQNKL-YoIXwkV0MbhCW0&callback=initMap&language=en&region=US&&libraries=places"></script>
-    <script type="text/javascript" src="assets/javascript/xml-to-json.js"></script>
-    <script type="text/javascript" src="assets/javascript/logic.js"></script>
+    
     <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
     <script type="text/javascript" src="assets/javascript/firebase.js"></script>
+    <script type="text/javascript" src="assets/javascript/logic.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARhPeu596nXJrWQNKL-YoIXwkV0MbhCW0&callback=initMap&language=en&region=US&&libraries=places"></script>
     <!-- Compiled and minified JavaScript for Materialize-->
 </body>
 
