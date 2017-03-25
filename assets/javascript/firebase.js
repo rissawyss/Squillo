@@ -1,3 +1,5 @@
+// Initialize Firebase using squillo firebase database
+
 var config = {
     apiKey: "AIzaSyCp9Tb6cWTLPmjD95LDQfDXoLXJ39XXEZI",
     authDomain: "squillo-991f9.firebaseapp.com",
@@ -5,13 +7,13 @@ var config = {
     storageBucket: "squillo-991f9.appspot.com",
     messagingSenderId: "935359938051"
 };
+
 firebase.initializeApp(config);
 
 var database = firebase.database();
 
-//var squilloName = ""; local storage established on logic.js
 var name = "";
-var zip = ""; //need appropriate variable for each saved zip
+var zip = "";
 var singleFamilyData = "";
 var medianRentData = "";
 var medianListData = "";
@@ -20,79 +22,36 @@ var bdrm1Data = "";
 var bdrm2Data = "";
 var foreclosureData = "";
 var salesTaxData = "";
-var saved = [];
-var userinfo;
-var favorites;
+var favs = [];
 
-var user = firebase.auth().currentUser;
-console.log(user);
+function saveUser(username) {
 
-
-
-
-//************* this saveUser function needs to be called on the logic.js file when user entered*********
-function saveUser() {
-    event.preventDefault();
-
-    name = $("#name").val();
-
-    //=====================================================
-    userinfo = database.ref("'" + name + "'");
-
-
-    // userinfo.push({
-    //  favorites: favs
-    // })
-    //=====================================================
     database.ref().push({
-        name: name,
-        saved: saved
-            //saved: userinfo.push({saved: saved}) 
-    });
-
-    //      userinfo.child(name).set({
-    //          saved: saved
-    // });
+        name: username,
+        favorites: favs
+    })
 
 }
 
-function saveToFavs(username) {
+// $(document).on("click", "#save-btn", function(){
 
-    singleFam = $("#singleFam").html();
-    medianRent = $("#medianRent").html();
-    medianList = $("#medianList").html();
-    medianSale = $("#medianSale").html();
-    bdrm1 = $("#bdrm1").html();
-    bdrm2 = $("#bdrm2").html();
-    foreclosures = $("#foreclosures").html();
-    tax = $("#tax").html();
-    zip = $("#zip-display").html();
-    var newFav = {
-        singleFam: singleFam,
-        medianRent: medianRent,
-        medianList: medianList,
-        medianSale: medianSale,
-        bdrm1: bdrm1,
-        bdrm2: bdrm2,
-        foreclosures: foreclosures,
-        tax: tax,
-        zip: zip
-    }
+// });
 
-    favs.push(newFav);
-    console.log(favs);
+function saveToFavs(event) {
+    event.preventDefault();
+    console.log("++++++++++++++");
 
-    database.ref("'" + username + "'").push({ newFav });
+    var currUser = localStorage.getItem("squilloName");
 
-    console.log("zip: " + zip);
-    console.log("SingleFamilyData: " + singleFamilyData);
-    console.log("MedianRentData: " + medianRentData);
-    console.log("MedianListData: " + medianListData);
-    console.log("MedianSaleData: " + medianSaleData);
-    console.log("BDRM1Data: " + bdrm1Data);
-    console.log("BDRM2Data: " + bdrm2Data);
-    console.log("ForeclosureData: " + foreclosureData);
-    console.log("salesTaxData: " + salesTaxData);
+    zip = $("#zip-display").text();
+    singleFamilyData = $("#sf-data").text();
+    medianRentData = $("#mr-data").text();
+    medianListData = $("#ml-data").text();
+    medianSaleData = $("#ms-data").text();
+    bdrm1Data = $("#bdrm1-data").text();
+    bdrm2Data = $("#bdrm2-data").text();
+    foreclosureData = $("#fc-data").text();
+    salesTaxData = $("#tax-data").text();
 
     var newFav = {
         zip: zip,
@@ -106,46 +65,48 @@ function saveToFavs(username) {
         salesTaxData: salesTaxData
     };
 
-    // database.ref().push({
-    //  zip: zip,
-    //  singleFamilyData: singleFamilyData,
-    //  medianRentData: medianRentData,
-    //  medianListData: medianListData,
-    //  medianSaleData: medianSaleData,
-    //  bdrm1Data: bdrm1Data,
-    //  bdrm2Data: bdrm2Data,
-    //  foreclosureData: foreclosureData,
-    //  salesTaxData: salesTaxData
-    // })
+    favs.push(newFav);
 
+    database.ref().once("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            var childData = childSnapshot.val();
+            for (var key in childData) {
+                if (childData[key] === currUser) {
+                    console.log(childSnapshot.key);
+                    theKey = childSnapshot.key;
 
+                    var updateFavs = database.ref().child(theKey);
+                    updateFavs.update({
+                        "favorites": favs
+                    });
 
-
-    saved.push(newFav);
-    // console.log(saved);
-
-    //userinfo.child(name).push({newFav});
-    userinfo.child(name).update({ saved });
-
-    // localStorage.setItem("saved", saved);
-
-    database.ref().update({
-        saved: saved
-
+                }
+            }
+        });
     });
+
+    console.log(theKey);
+
+
+
+    console.log(theKey);
+    console.log("zip: " + zip);
+    console.log("SingleFamilyData: " + singleFamilyData);
+    console.log("MedianRentData: " + medianRentData);
+    console.log("MedianListData: " + medianListData);
+    console.log("MedianSaleData: " + medianSaleData);
+    console.log("BDRM1Data: " + bdrm1Data);
+    console.log("BDRM2Data: " + bdrm2Data);
+    console.log("ForeclosureData: " + foreclosureData);
+    console.log("salesTaxData: " + salesTaxData);
+
+
+
+
+
+    console.log("++++++++++++++");
+    // username.child(fav).update({favs});
 
 }
 
-
-database.ref().on("value", function(snapshot) {
-
-    // storing the snapshot.val() in a variable for convenience
-    console.log("name: " + snapshot.val().name);
-    console.log("everything else: " + snapshot.val().saved);
-    var card = snapshot.val().saved;
-    var card1 = snapshot.val().saved[0];
-    var card2 = snapshot.val().saved[1];
-    console.log(card1);
-    console.log(card2);
-    
-}); 
+//************* this saveFavZip funtion needs to be called when user clicks to add favorite. Need variable to capture zip.*********

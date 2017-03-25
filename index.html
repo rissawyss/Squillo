@@ -54,8 +54,8 @@
                     <div class="col s6 center query">
                     <h3 class="">Which zip code are you curious about?</h3>                
                     <form class="input-field inline">
-                        <input id="zipcode" type="text" class="validate">
-                        <label for="zipcode" data-error="wrong" data-success="right" class="left-align">Enter Your Zip Code</label>
+                        <input id="zipcode-input" type="text" class="validate">
+                        <label for="zipcode-input" data-error="wrong" data-success="right" class="left-align">Enter Your Zip Code</label>
                         <input class="btn waves-effect waves-light teal" type="submit" name="action" id="searchBtn" value="Search">
                         <button class="btn waves-effect waves-light teal" type="submit" name="action" id="currentLocationBtn">Use Current Location</button>
                     </form>
@@ -67,20 +67,15 @@
         <section class="infoSection">
 
             <div class="row infobox">
-                <div class="col m12 blue-grey darken-3">
-                    <button>Save Me!</button>
-                    <h3 id="zip-display" class="white-text center">90020</h3>
+                <div id="results" class="col m12 blue-grey darken-3">
+
+                    <!-- <button>Save Me!</button>
+                    <h3 id="zip-display" class="white-text center"></h3> -->
                     
-                    <div class="col s12 m3">
-                        <div class="white-text center">
-                            <img src="assets/images/singlefam.png" class="realEstateIcons">
-                            <div id="singlefam">
-                                <p>Zillow Home Value Index (ZIP): Single Family Residences - 90020</p>
-                                <p>$3486900</p>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col s12 m3">
+
+
+                    
+                    <!-- <div class="col s12 m3">
                         <div class="white-text center">
                             <img src="assets/images/rent.png" class="realEstateIcons">
                             <div id="rent">
@@ -143,7 +138,7 @@
                             </div>                            
                         </div>
                     </div>    
-
+ -->
                 </div>
 
             </div>           

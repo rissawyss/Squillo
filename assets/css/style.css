@@ -41,7 +41,7 @@ main {
 .querySection {
 	display: block;
     height: 450px; 
-    background-color:;   
+    /*background-color:;   */
 }
 
 .query {
@@ -86,5 +86,9 @@ nav {
 	display:block;
 	margin-top:10px;
 
+}
+
+.wrapper img {
+	max-height: 107px;
 }
 
