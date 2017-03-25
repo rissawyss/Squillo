@@ -32,7 +32,6 @@ function saveUser(username) {
 
 function saveToFavs(event) {
     event.preventDefault();
-    console.log("++++++++++++++");
 
     var currUser = localStorage.getItem("squilloName");
 
@@ -82,13 +81,7 @@ function saveToFavs(event) {
             }
         });
     });
-
-
-
-    console.log("++++++++++++++");
 }
-
-
 
 function renderCards() {
 
