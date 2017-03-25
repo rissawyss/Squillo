@@ -1,4 +1,4 @@
-  // Initialize Firebase using squillo firebase database
+    // Initialize Firebase using squillo firebase database
   
   var config = {
     apiKey: "AIzaSyCp9Tb6cWTLPmjD95LDQfDXoLXJ39XXEZI",

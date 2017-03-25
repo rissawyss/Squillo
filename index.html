@@ -16,22 +16,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
     <header>
-        <nav class="blue-grey darken-4" role="navigation">
+        <nav class="blue-grey darken-4 navbar" role="navigation" id="home">
             <div class="nav-wrapper container header">
-                <a class="brand-logo"><img src="assets/images/squillo_logo_no_text_60px.png" class="logo"</a>
+                <a class="brand-logo"><img src="assets/images/squillo_logo_no_text_60px.png" class="logo"></a>
                 <!-- Menu Links that hide on Medium and smaller devices -->
                 <ul class="right hide-on-med-and-down">
-                    <li id="hi"></li>
+                    <li><a id="hi"></a></li>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Favs</a></li>
+                    <li><a href="#faves">Faves</a></li>
                 </ul>
                 <!-- Side Navigation for Mobile -->
                 <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
                     <li>
                         <a href="#">Home</a>
-                        <a href="#">Faves</a>
+                        <a href="#faves">Faves</a>
                     </li>
                 </ul>
                 <!-- Hamburger Menu Icon -->
@@ -43,15 +43,20 @@
         <!-- Search -->
         <section class="introSection">
             
-                <div class="col s12 center">
-                    <img src="assets/images/neighborhood_max.jpg" class="responsive-img">
+                <div class="col s12 center" id="img-container">
+                    <img src="assets/images/neighborhood_max72.png" class="responsive-img">                                      
                 </div>
-            
+                                
+                <!-- <div class="portfolio_imgs" id="img_container_1">
+                    <img src="assets/images/bodyboarding.jpg" id="project_1">
+                    <div id="banner_1"><h2>Wave Finder<h2></div>
+                </div> -->
+
         </section>
         <!-- Info -->
         <section class="querySection">
             <div class="row">
-                    <div class="col s6 center query">
+                    <div class="col s12 l6 center query">
                     <h3 class="">Which zip code are you curious about?</h3>                
                     <form class="input-field inline">
                         <input id="zipcode" type="text" class="validate">
@@ -60,27 +65,95 @@
                         <button class="btn waves-effect waves-light teal" type="submit" name="action" id="currentLocationBtn">Use Current Location</button>
                     </form>
                 </div>
-                    <div id="map" class="col s6"></div>
+                    <div id="map" class="col s12 l6"></div>
             </div>
         </section>
+        
         <!-- Info -->
-        <section class="infoSection">
-            <div class="row">
-                <div class="col m10 blue-grey white-text">
-                    <button id="save-btn">Save Me!</button>
-                    <h3 id="zip-display">90020</h3>
-                    <div id="results"></div>
-                    
+        <section class="infoSection" id="infosection">
+
+            <div class="row infobox">
+                <div class="col m12 blue-grey darken-3">
+                    <div class="col s12">
+                    <div class="row">
+                    <a class="btn-floating btn-large waves-effect waves-light red" id="fave-heart"><img src="assets/images/heart-white-outline-no-fill.png" class="heart"></a>                    
+                    <h3 id="zip-display" class="white-text center">90020</h3>   
+                    </div>
+                    </div>
+                    <div class="col s12 m6 l3 data-cards">
+                        <div class="white-text center">
+                            <img src="assets/images/singlefam.png" class="realEstateIcons results">
+                            <div id="singleFam" class="results">                            
+                                <!-- append single family info here -->
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3 data-cards">
+                        <div class="white-text center">
+                            <img src="assets/images/rent.png" class="realEstateIcons results">
+                            <div id="rent" class="results">
+                                <!-- append median rent info here -->
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3 data-cards">
+                        <div class="white-text center">
+                            <img src="assets/images/sale.png" class="realEstateIcons results">
+                            <div id="sale" class="results">
+                                <!-- append median list info here -->
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3 data-cards">
+                        <div class="white-text center">
+                            <img src="assets/images/sold.png" class="realEstateIcons results">
+                            <div id="sold" class="results">
+                                <!-- append median sold info here -->
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3 data-cards">
+                        <div class="white-text center">
+                            <img src="assets/images/1br.png" class="realEstateIcons results">
+                            <div id="1br" class="results">
+                                <!-- append 1bedroom info here -->
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3 data-cards">
+                        <div class="white-text center">
+                            <img src="assets/images/2br.png" class="realEstateIcons results">
+                            <div id="2br" class="results">
+                                
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3 data-cards">
+                        <div class="white-text center">
+                            <img src="assets/images/foreclose.png" class="realEstateIcons results">
+                            <div id="foreclose" class="results">
+                                
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3 data-cards">
+                        <div class="white-text center">
+                            <img src="assets/images/tax.png" class="realEstateIcons results">
+                            <div id="tax" class="results">
+                                
+                            </div>                            
+                        </div>
+                    </div>    
                 </div>
-            </div>
-            <div class="row">
-            <div id="salesTaxData" class="col m10 blue-grey white-text"></div>
+
+            </div> 
         </section>
+
         <!-- Cards -->
-        <section class="cardSection">
+        <section class="cardSection" id="faves">
             <div class="row">
-                <div class="col s12 m2">
-                    <div class="card blue-grey darken-1">
+                <div class="col s12 m4 l3">
+                    <div class="card blue-grey">
                         <div class="card-content white-text">
                             <span class="card-title">Card Title</span>
                             <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
@@ -91,8 +164,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m2">
-                    <div class="card blue-grey darken-1">
+                <div class="col s12 m4 l3">
+                    <div class="card blue-grey">
                         <div class="card-content white-text">
                             <span class="card-title">Card Title</span>
                             <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
@@ -125,17 +198,20 @@
     <footer class="page-footer blue-grey darken-4">
         <div class="container">
             <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">Rows or Columns</p>
+                <div class="col s12 l4">                    
+                    <ul>                        
+                        <li><a class="grey-text text-lighten-3" href="http://www.fanniemae.com" target="blank">Fannie Mae</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://www.freddiemac.com/" target="blank">Freddie Mac</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.hudhomestore.com" target="blank">HUD Homes</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.fhfa.gov/" target="blank">Federal Finance Housing Agency</a></li>
+                    </ul>
                 </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
+                <div class="col s12 l4">                    
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/home-buying/types-of-home-construction.aspx" target="blank">Types of Home Construction</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/homeownership/home-maintenance-and-repair.aspx" target="blank">Home Maintenance and Repair</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/homeownership/remodeling-your-home.aspx" target="blank">Remodel Your Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.nahb.org/en/consumers/homeownership/design-trends.aspx" target="blank">Design Trends</a></li>                        
                     </ul>
                 </div>
             </div>
@@ -143,7 +219,7 @@
         <div class="footer-copyright">
             <div class="container">
                 © 2017 3Nodes
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                <a class="grey-text text-lighten-4 right" href="#home">Back to Top</a>
             </div>
         </div>
     </footer>
@@ -157,5 +233,39 @@
     <script type="text/javascript" src="assets/javascript/firebase.js"></script>
     <!-- Compiled and minified JavaScript for Materialize-->
 </body>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, a[href='#home']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+      // Store hash
+      var hash = this.hash;
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
 
 </html>
