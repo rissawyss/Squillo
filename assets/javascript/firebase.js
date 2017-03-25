@@ -26,9 +26,6 @@
   var userinfo;
   var favorites;
 
-  var user = firebase.auth().currentUser;
-  console.log(user);
-
 
 
 
@@ -47,8 +44,8 @@
 	// })
 //=====================================================
 		database.ref().push({
-	    name: name,
-	    saved: saved
+	    "name": name,
+	    "saved": saved
 	    //saved: userinfo.push({saved: saved}) 
 	  });
 
@@ -61,6 +58,8 @@
 //************* this saveFavZip funtion needs to be called when user clicks to add favorite. Need variable to capture zip.*********
 $("#save-btn").on("click", function(event) {
 	event.preventDefault();
+
+	name = (localStorage.getItem("squilloName"));
 	zip = $("#zip-display").text();
 	singleFamilyData = $("#singleFamilyData").text();
 	medianRentData = $("#medianRentData").text();
@@ -70,16 +69,6 @@ $("#save-btn").on("click", function(event) {
 	bdrm2Data = $("#bdrm2Data").text();
 	foreclosureData = $("#foreclosureData").text();
 	salesTaxData = $("#salesTaxData").text();
-
-	console.log("zip: " + zip);
-	console.log("SingleFamilyData: " + singleFamilyData);
-	console.log("MedianRentData: " + medianRentData);
-	console.log("MedianListData: " + medianListData);
-	console.log("MedianSaleData: " + medianSaleData);
-	console.log("BDRM1Data: " + bdrm1Data);
-	console.log("BDRM2Data: " + bdrm2Data);
-	console.log("ForeclosureData: " + foreclosureData);
-	console.log("salesTaxData: " + salesTaxData);
 
 	var newFav = {
   		zip: zip,
@@ -91,47 +80,45 @@ $("#save-btn").on("click", function(event) {
 		bdrm2Data: bdrm2Data,
 		foreclosureData: foreclosureData,
 		salesTaxData: salesTaxData
-};
-
-	// database.ref().push({
-	// 	zip: zip,
-	// 	singleFamilyData: singleFamilyData,
-	// 	medianRentData: medianRentData,
-	// 	medianListData: medianListData,
-	// 	medianSaleData: medianSaleData,
-	// 	bdrm1Data: bdrm1Data,
-	// 	bdrm2Data: bdrm2Data,
-	// 	foreclosureData: foreclosureData,
-	// 	salesTaxData: salesTaxData
-	// })
-
-
-
+	};
 
 	saved.push(newFav);
-	// console.log(saved);
 
-	//userinfo.child(name).push({newFav});
-	userinfo.child(name).update({saved});
+	console.log("name" + name);
+	console.log("zip: " + zip);
+	console.log("SingleFamilyData: " + singleFamilyData);
+	console.log("MedianRentData: " + medianRentData);
+	console.log("MedianListData: " + medianListData);
+	console.log("MedianSaleData: " + medianSaleData);
+	console.log("BDRM1Data: " + bdrm1Data);
+	console.log("BDRM2Data: " + bdrm2Data);
+	console.log("ForeclosureData: " + foreclosureData);
+	console.log("salesTaxData: " + salesTaxData);
 	
-	// localStorage.setItem("saved", saved);
+	var userKey = "";
 
-		database.ref().update({
-	    saved: saved
+		database.ref().once("value", function(snapshot){
+			snapshot.forEach(function(childSnapshot){
+				var childData = childSnapshot.val();
+				for (var prop in childData){
+					if (childData[prop] === name) {
+						console.log("found it");
+						console.log(childSnapshot.key);
+						userKey = childSnapshot.key;
+						console.log(userKey);
 
+							database.ref().update({
+						    saved: saved
+					});
+				}
+			}
+		});
 	});
+});
 
-	});
 
 
-	database.ref().on("value", function(snapshot) {
 
-      // storing the snapshot.val() in a variable for convenience
-      console.log("name: " + snapshot.val().name);
-      console.log("everything else: " + snapshot.val().saved);
-      var card = snapshot.val().saved;
-      var card1 = snapshot.val().saved[0];
-      var card2 = snapshot.val().saved[1];
-      console.log(card1);
-      console.log(card2);
-  });
+	
+
+
